@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ClimaCare Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=20"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-page">
+
+        <header class="admin-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    CLIMACARE UAE AI
+                </p>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    User, feedback and system overview
+                </p>
+
+            </div>
+
+
+            <div class="admin-header-actions">
+
+                <a
+                    href="/"
+                    class="secondary-button"
+                >
+                    Back to App
+                </a>
+
+                <a
+                    href="/logout"
+                    class="primary-button"
+                >
+                    Logout
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <main class="admin-content">
+
+
+            <!-- =====================================================
+                 SUMMARY CARDS
+            ====================================================== -->
+
+            <section class="admin-summary-grid">
+
+                <article class="admin-summary-card">
+
+                    <span>
+                        Registered Users
+                    </span>
+
+                    <strong>
+                        {{ total_users }}
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-summary-card">
+
+                    <span>
+                        Feedback Entries
+                    </span>
+
+                    <strong>
+                        {{ total_feedback }}
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-summary-card">
+
+                    <span>
+                        System Status
+                    </span>
+
+                    <strong>
+                        Online
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-summary-card">
+
+                    <span>
+                        Application
+                    </span>
+
+                    <strong>
+                        ClimaCare UAE AI
+                    </strong>
+
+                </article>
+
+            </section>
+
+
+            <!-- =====================================================
+                 USERS
+            ====================================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            USERS
+                        </p>
+
+                        <h2>
+                            Registered Accounts
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-table-wrap">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Role
+                                </th>
+
+                                <th>
+                                    Created
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for user in users %}
+
+                            <tr>
+
+                                <td>
+                                    {{ user["id"] }}
+                                </td>
+
+                                <td>
+                                    {{ user["name"] }}
+                                </td>
+
+                                <td>
+                                    {{ user["email"] }}
+                                </td>
+
+                                <td>
+                                    <span class="admin-role-badge">
+                                        {{ user["role"] }}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    {{ user["created_at"] }}
+                                </td>
+
+                            </tr>
+
+                            {% else %}
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="admin-empty"
+                                >
+                                    No registered users found.
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 FEEDBACK
+            ====================================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            USER FEEDBACK
+                        </p>
+
+                        <h2>
+                            Recent Feedback
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-table-wrap">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    User
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Rating
+                                </th>
+
+                                <th>
+                                    Comment
+                                </th>
+
+                                <th>
+                                    Submitted
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for item in feedback %}
+
+                            <tr>
+
+                                <td>
+                                    {{ item["user_name"] }}
+                                </td>
+
+                                <td>
+                                    {{ item["user_email"] }}
+                                </td>
+
+                                <td>
+                                    <span class="admin-rating">
+                                        {{ item["rating"] }} / 5
+                                    </span>
+                                </td>
+
+                                <td>
+                                    {{ item["comment"] or "No comment" }}
+                                </td>
+
+                                <td>
+                                    {{ item["created_at"] }}
+                                </td>
+
+                            </tr>
+
+                            {% else %}
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="admin-empty"
+                                >
+                                    No feedback submitted yet.
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+{
+    "project": "ClimaCare UAE AI",
+    "location": "Dubai, UAE",
+    "forecast_date": "2026-08-15",
+    "current_aqi": 168.75,
+    "predicted_next_day_aqi": 154.89,
+    "predicted_category": "Unhealthy",
+    "early_warning": {
+        "active": true,
+        "prediction_trigger": 90,
+        "note": "ClimaCare's early-warning trigger is separate from the official AQI category."
+    },
+    "explanation": {
+        "headline": "Why did ClimaCare produce this forecast?",
+        "upward_summary": "The strongest signals pushing the forecast higher were Fine Particulate Matter (PM2.5), Current Air Quality Index, Temperature.",
+        "downward_summary": "The strongest signals pulling the forecast lower were Ground-Level Ozone, Particulate Matter (PM10).",
+        "increasing_drivers": [
+            {
+                "name": "Fine Particulate Matter (PM2.5)",
+                "observed_value": 74.45,
+                "model_contribution": 39.44,
+                "direction": "increased forecast"
+            },
+            {
+                "name": "Current Air Quality Index",
+                "observed_value": 168.75,
+                "model_contribution": 1.48,
+                "direction": "increased forecast"
+            },
+            {
+                "name": "Temperature",
+                "observed_value": 35.54,
+                "model_contribution": 0.66,
+                "direction": "increased forecast"
+            },
+            {
+                "name": "3-Day AQI Trend",
+                "observed_value": 171.14,
+                "model_contribution": 0.63,
+                "direction": "increased forecast"
+            },
+            {
+                "name": "UV Index",
+                "observed_value": 2.15,
+                "model_contribution": 0.61,
+                "direction": "increased forecast"
+            }
+        ],
+        "reducing_drivers": [
+            {
+                "name": "Ground-Level Ozone",
+                "observed_value": 80.62,
+                "model_contribution": -2.48,
+                "direction": "reduced forecast"
+            },
+            {
+                "name": "Particulate Matter (PM10)",
+                "observed_value": 108.02,
+                "model_contribution": -0.74,
+                "direction": "reduced forecast"
+            },
+            {
+                "name": "3-Day PM2.5 Trend",
+                "observed_value": 85.79,
+                "model_contribution": -0.52,
+                "direction": "reduced forecast"
+            },
+            {
+                "name": "Nitrogen Dioxide",
+                "observed_value": 61.17,
+                "model_contribution": -0.21,
+                "direction": "reduced forecast"
+            },
+            {
+                "name": "European AQI Indicator",
+                "observed_value": 105.42,
+                "model_contribution": -0.16,
+                "direction": "reduced forecast"
+            }
+        ],
+        "interpretation_note": "These values explain the model's prediction and do not prove causation."
+    }
+}

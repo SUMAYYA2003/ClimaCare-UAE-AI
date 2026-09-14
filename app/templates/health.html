@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Health | ClimaCare UAE AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=8"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                CC
+            </div>
+
+            <div class="brand-text">
+
+                <h1>
+                    ClimaCare
+                </h1>
+
+                <span>
+                    UAE AI
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/forecast" class="nav-item">
+                <span>◉</span>
+                AI Forecast
+            </a>
+
+            <a href="/health" class="nav-item active">
+                <span>♡</span>
+                Health
+            </a>
+
+            <a href="/trends" class="nav-item">
+                <span>⌁</span>
+                Trends
+            </a>
+
+            <a href="/insights" class="nav-item">
+                <span>✦</span>
+                AI Insights
+            </a>
+            <a href="/explore" class="nav-item">
+    <span>⌖</span>
+    AI Explore
+</a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="uae-badge">
+                🇦🇪
+            </div>
+
+            <div>
+
+                <strong>
+                    Built for UAE
+                </strong>
+
+                <small>
+                    Climate-health intelligence
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content health-page">
+        <div class="health-cultural-bg" aria-hidden="true">
+
+    <div class="health-orb health-orb-one"></div>
+    <div class="health-orb health-orb-two"></div>
+    <div class="health-orb health-orb-three"></div>
+
+    <div class="health-palm health-palm-left">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="health-palm health-palm-right">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</div>
+
+<!-- ======================================= -->
+<!-- Health Page Header -->
+<!-- ======================================= -->
+
+<header class="topbar">
+
+    <div>
+
+        <p class="eyebrow">
+            UAE CLIMATE-HEALTH GUIDANCE
+        </p>
+
+        <h2>
+            Your environmental health guide
+        </h2>
+
+        <p class="subheading">
+            Understand today's environmental conditions
+            and how they may affect your health.
+        </p>
+
+    </div>
+
+
+    <div class="topbar-actions">
+
+        <div class="location-pill">
+            <span>●</span>
+            Dubai, UAE
+        </div>
+
+        <div class="live-pill">
+            <span class="live-dot"></span>
+            Live
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ======================================= -->
+<!-- Current Health Risk -->
+<!-- ======================================= -->
+
+<section class="health-risk-hero health-risk-hero-redesign">
+
+    <img
+    src="/static/images/health-uae-cultural.png"
+    alt=""
+    class="health-uae-cultural-art"
+    aria-hidden="true"
+>
+
+    <div class="health-risk-copy">
+
+        <p class="hero-label">
+            CURRENT CLIMATE-HEALTH RISK
+        </p>
+
+        <h3 id="health-risk-title">
+            Analysing today's conditions...
+        </h3>
+
+        <p id="health-risk-message">
+            ClimaCare is combining live air-quality, weather,
+            dust and heat conditions to prepare today's
+            environmental health guidance.
+        </p>
+
+        <div class="health-risk-badges">
+
+            <span
+                class="health-status-badge"
+                id="health-risk-level"
+            >
+                Calculating risk
+            </span>
+
+            <span class="health-live-badge">
+                ● Live environmental data
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="health-risk-visual">
+
+        <div class="health-aqi-ring">
+
+            <div class="health-aqi-ring-inner">
+
+                <span>
+                    CURRENT AQI
+                </span>
+
+                <strong id="health-current-aqi">
+                    --
+                </strong>
+
+                <small id="health-aqi-category">
+                    Loading...
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="health-risk-note">
+
+            <span>
+                TODAY'S HEALTH FOCUS
+            </span>
+
+            <strong id="health-focus-title">
+                Preparing personalised guidance...
+            </strong>
+
+            <p id="health-focus-message">
+                ClimaCare will adjust today's health advice
+                according to air quality, heat, humidity and dust.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ======================================= -->
+<!-- Environmental Health Indicators -->
+<!-- ======================================= -->
+
+<section class="health-indicators-section">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="eyebrow">
+                ENVIRONMENTAL HEALTH FACTORS
+            </p>
+
+            <h3>
+                What is affecting your health today?
+            </h3>
+
+            <p>
+                Key environmental conditions monitored by
+                ClimaCare UAE AI for Dubai.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="health-indicator-grid">
+
+        <article class="health-indicator-card">
+
+            <span class="health-indicator-icon">
+                ◌
+            </span>
+
+            <div>
+                <small>PM2.5</small>
+
+                <strong id="health-pm25">
+                    --
+                </strong>
+
+                <p>
+                    Fine particles that can affect
+                    respiratory health.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article class="health-indicator-card">
+
+            <span class="health-indicator-icon">
+                ☀
+            </span>
+
+            <div>
+                <small>Temperature</small>
+
+                <strong id="health-temperature">
+                    --
+                </strong>
+
+                <p>
+                    High temperatures may increase
+                    heat-related health stress.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article class="health-indicator-card">
+
+            <span class="health-indicator-icon">
+                ◇
+            </span>
+
+            <div>
+                <small>Humidity</small>
+
+                <strong id="health-humidity">
+                    --
+                </strong>
+
+                <p>
+                    Humidity can influence thermal
+                    comfort and heat exposure.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article class="health-indicator-card">
+
+            <span class="health-indicator-icon">
+                ≋
+            </span>
+
+            <div>
+                <small>Dust</small>
+
+                <strong id="health-dust">
+                    --
+                </strong>
+
+                <p>
+                    Airborne dust may increase
+                    irritation and respiratory exposure.
+                </p>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ======================================= -->
+<!-- Health Guard Recommendations -->
+<!-- ======================================= -->
+
+<section class="health-guidance-section">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="eyebrow">
+                HEALTH GUARD
+            </p>
+
+            <h3>
+                Practical guidance for today
+            </h3>
+
+            <p>
+                ClimaCare provides supportive recommendations
+                based on current environmental conditions.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="health-guidance-grid">
+
+        <article class="health-guidance-card">
+
+            <span class="health-guidance-icon">
+                ◉
+            </span>
+
+            <div>
+                <small>
+                    General outdoor guidance
+                </small>
+
+                <strong id="health-general-guidance">
+                    Preparing guidance...
+                </strong>
+
+                <p>
+                    Outdoor activities may still be possible
+                    with suitable precautions and awareness
+                    of current conditions.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article class="health-guidance-card">
+
+            <span class="health-guidance-icon">
+                ♡
+            </span>
+
+            <div>
+                <small>
+                    Sensitive groups
+                </small>
+
+                <strong id="health-sensitive-guidance">
+                    Checking environmental exposure...
+                </strong>
+
+                <p>
+                    Children, older adults and people who are
+                    sensitive to air pollution may benefit from
+                    additional precautions.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article class="health-guidance-card">
+
+            <span class="health-guidance-icon">
+                ☂
+            </span>
+
+            <div>
+                <small>
+                    Heat & sun protection
+                </small>
+
+                <strong id="health-heat-guidance">
+                    Reviewing heat conditions...
+                </strong>
+
+                <p>
+                    Carry water, use shade where possible,
+                    and consider sunglasses, sun protection
+                    or an umbrella during longer outdoor trips.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article class="health-guidance-card">
+
+            <span class="health-guidance-icon">
+                ⊕
+            </span>
+
+            <div>
+                <small>
+                    Air quality precautions
+                </small>
+
+                <strong id="health-air-guidance">
+                    Reviewing air-quality conditions...
+                </strong>
+
+                <p>
+                    When pollution or dust levels are elevated,
+                    reducing prolonged strenuous exposure and
+                    using appropriate protection may be helpful.
+                </p>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+    </main>
+
+</div>
+
+<script src="/static/js/health.js?v=8"></script>
+
+</body>
+
+</html>

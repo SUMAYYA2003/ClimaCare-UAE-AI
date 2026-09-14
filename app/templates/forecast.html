@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Forecast | ClimaCare UAE AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=3"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <!-- ============================================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                CC
+            </div>
+
+            <div class="brand-text">
+
+                <h1>ClimaCare</h1>
+
+                <span>UAE AI</span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a
+                href="/"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="/forecast"
+                class="nav-item active"
+            >
+                <span>◉</span>
+                AI Forecast
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>♡</span>
+                Health
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>⌁</span>
+                Trends
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>✦</span>
+                AI Insights
+            </a>
+            <a href="/explore" class="nav-item">
+    <span>⌖</span>
+    AI Explore
+</a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="uae-badge">
+                🇦🇪
+            </div>
+
+            <div>
+
+                <strong>
+                    Built for UAE
+                </strong>
+
+                <small>
+                    Climate-health intelligence
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ============================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================================= -->
+
+    <main class="main-content">
+
+
+        <!-- ========================================= -->
+        <!-- PAGE HEADER -->
+        <!-- ========================================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    CLIMACARE PREDICTIVE INTELLIGENCE
+                </p>
+
+                <h2>
+                    AI Air Quality Forecast
+                </h2>
+
+                <p class="subheading">
+                    Tomorrow's environmental outlook for Dubai
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="location-pill">
+
+                    <span>●</span>
+
+                    Dubai, UAE
+
+                </div>
+
+
+                <div class="live-pill">
+
+                    <span class="live-dot"></span>
+
+                    AI Active
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ========================================= -->
+        <!-- FORECAST HERO -->
+        <!-- ========================================= -->
+
+        <section class="hero-card forecast-page-hero">
+
+
+            <div class="hero-copy">
+
+                <p class="hero-label">
+                    NEXT-DAY AI FORECAST
+                </p>
+
+
+                <h3 id="detail-forecast-status">
+                    Preparing tomorrow's outlook...
+                </h3>
+
+
+                <p id="detail-forecast-message">
+
+                    ClimaCare combines air pollution,
+                    weather conditions and recent
+                    environmental trends to estimate
+                    tomorrow's air-quality conditions.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="/"
+                        class="primary-button"
+                    >
+                        ← Back to Dashboard
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="aqi-visual">
+
+                <div class="aqi-ring">
+
+                    <div>
+
+                        <span class="aqi-caption">
+                            PREDICTED AQI
+                        </span>
+
+                        <strong id="detail-forecast-aqi">
+                            --
+                        </strong>
+
+                        <span
+                            id="detail-forecast-category"
+                            class="aqi-category"
+                        >
+                            Loading
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================= -->
+        <!-- CURRENT VS FORECAST -->
+        <!-- ========================================= -->
+
+        <section class="section-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    AQI COMPARISON
+                </p>
+
+                <h3>
+                    Today vs tomorrow
+                </h3>
+
+            </div>
+
+            <span id="detail-forecast-date">
+                Loading forecast date...
+            </span>
+
+        </section>
+
+
+        <section class="forecast-value">
+
+
+            <div>
+
+                <span>
+                    Current AQI
+                </span>
+
+                <strong id="detail-current-aqi">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Predicted next-day AQI
+                </span>
+
+                <strong id="detail-next-aqi">
+                    --
+                </strong>
+
+            </div>
+              <p id="detail-aqi-change">
+    Comparing today and tomorrow...
+</p>
+        </section>
+
+<!-- Practical Climate Guidance -->
+<section class="forecast-guidance-section">
+
+    <div class="guidance-heading">
+        <span class="section-kicker">CLIMACARE GUIDANCE</span>
+        <h2>Plan your day smarter</h2>
+        <p>
+            Practical recommendations based on tomorrow's
+            environmental conditions.
+        </p>
+        <div class="guidance-image-wrap">
+    <img
+        src="/static/images/guidance-icons.png"
+        alt="ClimaCare outdoor timing, activity guidance and protection icons"
+        class="guidance-image"
+    >
+</div>
+    </div>
+
+    <div class="guidance-grid">
+<article class="guidance-card">
+
+    <div class="guidance-icon" aria-hidden="true">
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 7v5l3 2"></path>
+        </svg>
+    </div>
+
+    <div>
+        <span class="guidance-label">
+            Best outdoor time
+        </span>
+
+        <strong id="best-outdoor-time">
+            Analysing conditions...
+        </strong>
+    </div>
+
+</article>
+        <article class="guidance-card">
+        <div class="guidance-icon" aria-hidden="true">
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <path d="M12 3l7 3v5c0 4.6-2.9 8.2-7 10-4.1-1.8-7-5.4-7-10V6l7-3z"></path>
+        <path d="M9 12l2 2 4-4"></path>
+    </svg>
+</div>
+
+            <div>
+                <span class="guidance-label">Activity guidance</span>
+                <strong id="activity-guidance">
+                    Preparing advice...
+                </strong>
+            </div>
+        </article>
+
+        <article class="guidance-card">
+           <div class="guidance-icon" aria-hidden="true">
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="M4.9 4.9l1.4 1.4"></path>
+        <path d="M17.7 17.7l1.4 1.4"></path>
+        <path d="M4.9 19.1l1.4-1.4"></path>
+        <path d="M17.7 6.3l1.4-1.4"></path>
+    </svg>
+</div>
+
+            <div>
+                <span class="guidance-label">Protection</span>
+                <strong id="protection-guidance">
+                    Checking climate conditions...
+                </strong>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="guidance-message" id="forecast-practical-message">
+        ClimaCare is preparing personalised environmental guidance.
+    </div>
+
+</section>
+
+        <!-- ========================================= -->
+        <!-- HEALTH + WARNING -->
+        <!-- ========================================= -->
+
+        <section
+            class="forecast-layout"
+            style="margin-top: 28px;"
+        >
+
+
+            <article class="forecast-card">
+
+                <div class="forecast-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            AI INTERPRETATION
+                        </p>
+
+                        <h3>
+                            Forecast intelligence
+                        </h3>
+
+                    </div>
+
+                    <span class="ai-badge">
+                        ✦ AI
+                    </span>
+
+                </div>
+
+
+                <div class="forecast-value">
+
+
+                    <div>
+
+                        <span>
+                            Forecast category
+                        </span>
+
+                        <strong
+                            id="detail-category"
+                            class="forecast-category"
+                        >
+                            Loading
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Health risk
+                        </span>
+
+                        <strong
+                            id="detail-health-risk"
+                            class="forecast-category"
+                        >
+                            Loading
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="confidence-row">
+
+                    <span>
+                        Prediction engine
+                    </span>
+
+                    <strong>
+                        Random Forest AI
+                    </strong>
+
+                </div>
+
+
+                <div class="confidence-row">
+
+                    <span>
+                        Model input
+                    </span>
+
+                    <strong>
+                        28 verified features
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="health-card">
+
+                <div class="health-icon">
+                    !
+                </div>
+
+
+                <p class="eyebrow">
+                    EARLY WARNING
+                </p>
+
+
+                <h3 id="detail-warning-title">
+                    Checking forecast risk
+                </h3>
+
+
+                <p id="detail-health-advice">
+
+                    ClimaCare is analysing tomorrow's
+                    predicted environmental conditions.
+
+                </p>
+
+
+                <div class="warning-status">
+
+                    <span id="detail-warning-indicator">
+                        ●
+                    </span>
+
+                    <strong id="detail-warning-text">
+                        Checking warning status
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- ========================================= -->
+        <!-- ENVIRONMENTAL DRIVERS -->
+        <!-- ========================================= -->
+
+        <section class="section-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    ENVIRONMENTAL SIGNALS
+                </p>
+
+                <h3>
+                    Conditions behind the prediction
+                </h3>
+
+            </div>
+
+        </section>
+
+
+        <section class="metric-grid">
+
+
+            <article class="metric-card">
+
+                <span class="metric-icon">
+                    ◌
+                </span>
+
+                <p>PM2.5</p>
+
+                <strong id="detail-pm25">
+                    --
+                </strong>
+
+                <small>µg/m³</small>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-icon">
+                    ◍
+                </span>
+
+                <p>PM10</p>
+
+                <strong id="detail-pm10">
+                    --
+                </strong>
+
+                <small>µg/m³</small>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-icon">
+                    ☀
+                </span>
+
+                <p>Temperature</p>
+
+                <strong id="detail-temperature">
+                    --
+                </strong>
+
+                <small>°C</small>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-icon">
+                    ◒
+                </span>
+
+                <p>Humidity</p>
+
+                <strong id="detail-humidity">
+                    --
+                </strong>
+
+                <small>%</small>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-icon">
+                    ≋
+                </span>
+
+                <p>Dust</p>
+
+                <strong id="detail-dust">
+                    --
+                </strong>
+
+                <small>µg/m³</small>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- ========================================= -->
+        <!-- EXPLAINABLE AI -->
+        <!-- ========================================= -->
+
+        <section class="insight-card">
+
+
+            <div>
+
+                <p class="eyebrow">
+                    EXPLAINABLE AI
+                </p>
+
+                <h3>
+                    What influenced this forecast?
+                </h3>
+
+
+                <p>
+
+                    ClimaCare's validated model considers
+                    particulate pollution, ozone,
+                    current AQI, weather conditions and
+                    recent environmental trends.
+
+                    A dedicated explainability view will
+                    show the strongest factors pushing
+                    each prediction higher or lower.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="insight-button"
+                type="button"
+            >
+                View AI reasoning →
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="/static/js/forecast.js"></script>
+
+</body>
+
+</html>

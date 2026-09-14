@@ -1,0 +1,131 @@
+{
+    "project": "ClimaCare UAE AI",
+    "explanation_method": "Permutation Importance",
+    "evaluation_basis": "External temporal validation on newer Dubai environmental data",
+    "external_validation_samples": 178,
+    "verified_external_r2": 0.8514475467673839,
+    "interpretation": "Higher permutation importance indicates greater predictive reliance by the model.",
+    "causality_warning": "Feature importance represents predictive association and must not be interpreted as proof of causation.",
+    "top_prediction_drivers": [
+        {
+            "rank": 1,
+            "feature": "pm2_5",
+            "display_name": "Fine Particulate Matter (PM2.5)",
+            "group": "Air Pollution",
+            "importance_mean": 1.278929239124039,
+            "importance_std": 0.10908043078785298
+        },
+        {
+            "rank": 2,
+            "feature": "ozone",
+            "display_name": "Ground-Level Ozone",
+            "group": "Air Pollution",
+            "importance_mean": 0.02151936087680127,
+            "importance_std": 0.008841105425996932
+        },
+        {
+            "rank": 3,
+            "feature": "us_aqi",
+            "display_name": "Current Air Quality Index",
+            "group": "Air Quality",
+            "importance_mean": 0.016317959012380073,
+            "importance_std": 0.00306798089714239
+        },
+        {
+            "rank": 4,
+            "feature": "temperature",
+            "display_name": "Temperature",
+            "group": "Weather",
+            "importance_mean": 0.009484862725507226,
+            "importance_std": 0.0024048578783696867
+        },
+        {
+            "rank": 5,
+            "feature": "uv_index",
+            "display_name": "UV Index",
+            "group": "Climate / Exposure",
+            "importance_mean": 0.008762926618541573,
+            "importance_std": 0.0026530618382997304
+        },
+        {
+            "rank": 6,
+            "feature": "pm10",
+            "display_name": "Particulate Matter (PM10)",
+            "group": "Air Pollution",
+            "importance_mean": 0.003912887633963353,
+            "importance_std": 0.0010094501953633152
+        },
+        {
+            "rank": 7,
+            "feature": "aerosol_optical_depth",
+            "display_name": "Atmospheric Aerosol Load",
+            "group": "Atmosphere",
+            "importance_mean": 0.00318254823349321,
+            "importance_std": 0.0009286364409053285
+        },
+        {
+            "rank": 8,
+            "feature": "sulphur_dioxide",
+            "display_name": "Sulphur Dioxide",
+            "group": "Air Pollution",
+            "importance_mean": 0.002426428415820464,
+            "importance_std": 0.00110931900736475
+        },
+        {
+            "rank": 9,
+            "feature": "nitrogen_dioxide",
+            "display_name": "Nitrogen Dioxide",
+            "group": "Air Pollution",
+            "importance_mean": 0.0021073415614718816,
+            "importance_std": 0.0013898860896079902
+        },
+        {
+            "rank": 10,
+            "feature": "us_aqi_roll3",
+            "display_name": "3-Day AQI Trend",
+            "group": "Historical Trend",
+            "importance_mean": 0.0019582948756449005,
+            "importance_std": 0.0008893466347701962
+        },
+        {
+            "rank": 11,
+            "feature": "european_aqi",
+            "display_name": "European AQI Indicator",
+            "group": "Air Quality",
+            "importance_mean": 0.0016424683095863867,
+            "importance_std": 0.0008486688742571815
+        },
+        {
+            "rank": 12,
+            "feature": "humidity",
+            "display_name": "Relative Humidity",
+            "group": "Weather",
+            "importance_mean": 0.0009042317839541014,
+            "importance_std": 0.001178367677949508
+        },
+        {
+            "rank": 13,
+            "feature": "wind_speed",
+            "display_name": "Wind Speed",
+            "group": "Weather",
+            "importance_mean": 0.0006908104008431448,
+            "importance_std": 0.0018987600436586132
+        },
+        {
+            "rank": 14,
+            "feature": "pm10_lag1",
+            "display_name": "Previous-Day PM10",
+            "group": "Historical Pollution",
+            "importance_mean": 0.00038385752065259735,
+            "importance_std": 0.0005530003134522111
+        },
+        {
+            "rank": 15,
+            "feature": "day",
+            "display_name": "Day of Month",
+            "group": "Temporal",
+            "importance_mean": 0.00030433775555526734,
+            "importance_std": 0.0005526014919046428
+        }
+    ]
+}

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Explore | ClimaCare UAE AI</title>
+
+    <!-- Main project CSS -->
+    <link rel="stylesheet" href="/static/css/style.css?v=16">
+
+    <!-- Leaflet map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+    <aside class="sidebar explore-sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">C</div>
+
+            <div>
+                <h1>ClimaCare</h1>
+                <span>UAE AI</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/forecast" class="nav-item">
+                <span>◉</span>
+                AI Forecast
+            </a>
+
+            <a href="/health" class="nav-item">
+                <span>♡</span>
+                Health
+            </a>
+
+            <a href="/trends" class="nav-item">
+                <span>⌁</span>
+                Trends
+            </a>
+
+            <a href="/insights" class="nav-item">
+                <span>✦</span>
+                AI Insights
+            </a>
+
+            <a href="/explore" class="nav-item active">
+                <span>⌖</span>
+                AI Explore
+            </a>
+
+        </nav>
+
+        <!-- Decorative sidebar image -->
+        <div class="explore-sidebar-art">
+            <img
+                src="/static/images/exploreimage2.png"
+                alt="UAE travel scenery"
+            >
+
+            <div class="explore-sidebar-art-overlay">
+                <span>🇦🇪</span>
+                <strong>Built for UAE</strong>
+                <p>
+                    Climate-health intelligence for smarter journeys.
+                </p>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <p>Explore • Protect • Live Better</p>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================================
+         MAIN CONTENT
+    ========================================================== -->
+    <main class="main-content explore-page">
+
+
+        <!-- =====================================================
+             HERO SECTION
+        ====================================================== -->
+        <section class="explore-hero">
+
+            <img
+                src="/static/images/exploreimage1.png"
+                alt=""
+                class="explore-hero-background"
+                aria-hidden="true"
+            >
+
+            <div class="explore-hero-overlay"></div>
+
+            <div class="explore-hero-content">
+
+                <p class="explore-eyebrow">
+                    TRAVEL SMART. STAY HEALTHY.
+                </p>
+
+                <h2>
+                    Explore the UAE
+                    <span>with AI-powered insights</span>
+                </h2>
+
+                <p class="explore-hero-description">
+                    Discover amazing places, check real-time environmental
+                    conditions and receive intelligent climate-aware travel
+                    recommendations.
+                </p>
+
+                <!-- Search -->
+                <div class="explore-search-wrapper">
+
+                    <span class="explore-search-icon">⌕</span>
+
+                    <input
+                        type="text"
+                        id="explore-search-input"
+                        placeholder="Search a destination — Burj Khalifa, Jumeirah Beach, Hatta, Abu Dhabi..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        id="explore-search-btn"
+                        class="explore-primary-btn"
+                    >
+                        Search
+                    </button>
+
+                </div>
+
+
+                <!-- Emirates -->
+                <div class="emirates-filter">
+
+                    <button
+                        class="emirate-chip active"
+                        data-emirate="all"
+                    >
+                        Popular
+                    </button>
+
+                    <button
+                        class="emirate-chip"
+                        data-emirate="dubai"
+                    >
+                        Dubai
+                    </button>
+
+                    <button
+                        class="emirate-chip"
+                        data-emirate="abu-dhabi"
+                    >
+                        Abu Dhabi
+                    </button>
+
+                    <button
+                        class="emirate-chip"
+                        data-emirate="sharjah"
+                    >
+                        Sharjah
+                    </button>
+
+                    <button
+                        class="emirate-chip"
+                        data-emirate="ajman"
+                    >
+                        Ajman
+                    </button>
+
+                    <button
+                        class="emirate-chip"
+                        data-emirate="umm-al-quwain"
+                    >
+                        Umm Al Quwain
+                    </button>
+
+                    <button
+                        class="emirate-chip"
+                        data-emirate="ras-al-khaimah"
+                    >
+                        Ras Al Khaimah
+                    </button>
+
+                    <button
+                        class="emirate-chip"
+                        data-emirate="fujairah"
+                    >
+                        Fujairah
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hero live badges -->
+            <div class="explore-live-badges">
+
+                <div class="hero-live-card">
+                    <span>☀</span>
+
+                    <div>
+                        <strong id="hero-location">
+                            Dubai, UAE
+                        </strong>
+
+                        <small id="hero-weather">
+                            Live environmental data
+                        </small>
+                    </div>
+                </div>
+
+
+                <div class="hero-live-card">
+                    <span>▣</span>
+
+                    <div>
+                        <strong id="hero-date">
+                            Loading date...
+                        </strong>
+
+                        <small>
+                            Live Data
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             LIVE ENVIRONMENT STRIP
+        ====================================================== -->
+        <section class="explore-live-strip">
+
+            <article class="explore-metric-card">
+                <div class="metric-icon metric-green">◉</div>
+
+                <div>
+                    <span>Current AQI</span>
+
+                    <strong id="explore-aqi">
+                        --
+                    </strong>
+
+                    <small id="explore-aqi-category">
+                        Loading...
+                    </small>
+                </div>
+            </article>
+
+
+            <article class="explore-metric-card">
+                <div class="metric-icon metric-red">♨</div>
+
+                <div>
+                    <span>Temperature</span>
+
+                    <strong id="explore-temperature">
+                        --
+                    </strong>
+
+                    <small>
+                        Current reading
+                    </small>
+                </div>
+            </article>
+
+
+            <article class="explore-metric-card">
+                <div class="metric-icon metric-blue">✣</div>
+
+                <div>
+                    <span>PM2.5</span>
+
+                    <strong id="explore-pm25">
+                        --
+                    </strong>
+
+                    <small>
+                        Fine particles
+                    </small>
+                </div>
+            </article>
+
+
+            <article class="explore-metric-card">
+                <div class="metric-icon metric-orange">≈</div>
+
+                <div>
+                    <span>Dust</span>
+
+                    <strong id="explore-dust">
+                        --
+                    </strong>
+
+                    <small>
+                        Environmental level
+                    </small>
+                </div>
+            </article>
+
+
+            <article class="explore-metric-card">
+                <div class="metric-icon metric-blue">◌</div>
+
+                <div>
+                    <span>Humidity</span>
+
+                    <strong id="explore-humidity">
+                        --
+                    </strong>
+
+                    <small>
+                        Relative humidity
+                    </small>
+                </div>
+            </article>
+
+
+            <article class="explore-metric-card">
+                <div class="metric-icon metric-blue">≋</div>
+
+                <div>
+                    <span>Wind Speed</span>
+
+                    <strong id="explore-wind">
+                        --
+                    </strong>
+
+                    <small>
+                        Current wind
+                    </small>
+                </div>
+            </article>
+
+
+            <!-- Forecast highlight -->
+            <article class="explore-forecast-highlight">
+
+                <div>
+                    <span>
+                        Tomorrow's AI Forecast
+                    </span>
+
+                    <strong id="explore-next-aqi">
+                        --
+                    </strong>
+                </div>
+
+                <div>
+                    <span
+                        id="explore-direction"
+                        class="forecast-direction-badge"
+                    >
+                        Analysing...
+                    </span>
+
+                    <p id="explore-forecast-text">
+                        Evaluating tomorrow's conditions.
+                    </p>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================================
+             MAP + RECOMMENDATIONS
+        ====================================================== -->
+        <section class="explore-main-grid">
+
+
+            <!-- MAP -->
+            <div class="explore-map-panel">
+
+                <div class="explore-panel-header">
+
+                    <div>
+                        <span class="section-kicker">
+                            INTERACTIVE MAP
+                        </span>
+
+                        <h3>
+                            Explore destinations
+                        </h3>
+                    </div>
+
+
+                    <div class="map-view-toggle">
+
+                        <button
+                            type="button"
+                            class="map-toggle active"
+                            data-layer="map"
+                        >
+                            Map
+                        </button>
+
+                        <button
+                            type="button"
+                            class="map-toggle"
+                            data-layer="satellite"
+                        >
+                            Satellite
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Destination category filters -->
+                <div class="explore-category-filter">
+
+                    <button
+                        class="destination-category active"
+                        data-category="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="destination-category"
+                        data-category="landmark"
+                    >
+                        Landmarks
+                    </button>
+
+                    <button
+                        class="destination-category"
+                        data-category="beach"
+                    >
+                        Beaches
+                    </button>
+
+                    <button
+                        class="destination-category"
+                        data-category="nature"
+                    >
+                        Nature
+                    </button>
+
+                    <button
+                        class="destination-category"
+                        data-category="desert"
+                    >
+                        Desert
+                    </button>
+
+                    <button
+                        class="destination-category"
+                        data-category="culture"
+                    >
+                        Culture
+                    </button>
+
+                    <button
+    class="destination-category"
+    data-category="indoor"
+>
+    Indoor
+</button>
+
+<button
+    type="button"
+    class="destination-category"
+    data-category="shopping"
+>
+    Shopping
+</button>
+
+<button
+    type="button"
+    class="destination-category"
+    data-category="family"
+>
+    Family
+</button>
+
+<button
+    type="button"
+    class="destination-category"
+    data-category="adventure"
+>
+    Adventure
+</button>
+
+</div>
+
+
+<!-- Real interactive UAE map -->
+<div
+    id="explore-map"
+    class="explore-live-map"
+    aria-label="Interactive UAE destination map"
+></div>
+
+
+                <div class="map-footer-actions">
+
+                    <button
+                        type="button"
+                        id="open-google-maps"
+                        class="map-external-btn"
+                    >
+                        ⌖ Open in Google Maps
+                    </button>
+
+                    <span id="map-location-label">
+                        Showing UAE destinations
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECOMMENDATIONS -->
+            <div class="explore-recommendation-panel">
+
+                <div class="explore-panel-header">
+
+                    <div>
+                        <span class="section-kicker">
+                            AI RECOMMENDATIONS
+                        </span>
+
+                        <h3>
+                            Best places for current conditions
+                        </h3>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="view-all-destinations"
+                        class="explore-soft-btn"
+                    >
+                        View All
+                    </button>
+
+                </div>
+
+
+                <p class="recommendation-intro">
+                    Suggestions are ranked using environmental conditions,
+                    activity type and time-of-day suitability.
+                </p>
+
+
+                <div
+                    id="destination-card-grid"
+                    class="destination-card-grid"
+                >
+
+
+            
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             AI ASSISTANT + EXPLAINABILITY
+        ====================================================== -->
+        <section class="explore-ai-grid">
+
+
+            <!-- CHATBOT -->
+            <div class="explore-ai-chat-card">
+
+                <div class="explore-panel-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            AI-POWERED ASSISTANT
+                        </span>
+
+                        <h3>
+                            Ask ClimaCare AI
+                        </h3>
+
+                    </div>
+
+                    <div class="ai-orb">
+                        AI
+                    </div>
+
+                </div>
+
+
+                <p class="ai-chat-description">
+                    Ask for climate-aware destination suggestions, outdoor
+                    guidance or explanations based on live conditions and
+                    ClimaCare's AI forecast.
+                </p>
+
+
+                <div
+                    id="ai-chat-history"
+                    class="ai-chat-history"
+                >
+
+                    <div class="ai-message assistant-message">
+
+                        <span class="message-avatar">
+                            AI
+                        </span>
+
+                        <p>
+                            Hello. Ask me where you could explore in the UAE
+                            based on current environmental conditions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-question-row">
+
+                    <input
+                        type="text"
+                        id="ai-question-input"
+                        placeholder="Example: Is tonight a good time to visit the beach?"
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        id="ask-climacare-ai"
+                        class="ai-send-btn"
+                    >
+                        ➤
+                    </button>
+
+                </div>
+
+
+                <div class="ai-example-prompts">
+
+                    <button
+                        type="button"
+                        class="ai-prompt-chip"
+                    >
+                        Best places tonight
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ai-prompt-chip"
+                    >
+                        Indoor activities for hot weather
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ai-prompt-chip"
+                    >
+                        Is the beach suitable now?
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ai-prompt-chip"
+                    >
+                        Should I avoid desert activities today?
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- WHY RECOMMENDED -->
+            <div class="explore-ai-explanation-card">
+
+                <div class="explore-panel-header">
+
+                    <div>
+                        <span class="section-kicker">
+                            EXPLAINABLE DECISION INTELLIGENCE
+                        </span>
+
+                        <h3>
+                            Why ClimaCare recommends this
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <p id="ai-decision-summary">
+                    ClimaCare combines live environmental readings,
+                    forecasted AQI and destination characteristics before
+                    generating travel guidance.
+                </p>
+
+
+                <div class="decision-factor-grid">
+
+                    <div class="decision-factor">
+                        <span>AQI</span>
+                        <strong id="decision-aqi">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="decision-factor">
+                        <span>Temperature</span>
+                        <strong id="decision-temperature">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="decision-factor">
+                        <span>Dust</span>
+                        <strong id="decision-dust">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="decision-factor">
+                        <span>Wind</span>
+                        <strong id="decision-wind">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="decision-factor">
+                        <span>Time Context</span>
+                        <strong id="decision-time">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="decision-factor">
+                        <span>AI Forecast</span>
+                        <strong id="decision-forecast">
+                            --
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FEEDBACK
+        ====================================================== -->
+        <section class="explore-feedback-section">
+
+            <div class="explore-feedback-card">
+
+                <div>
+
+                    <span class="section-kicker">
+                        USER FEEDBACK
+                    </span>
+
+                    <h3>
+                        Share your experience
+                    </h3>
+
+                    <p>
+                        Help evaluate the usefulness and usability of
+                        ClimaCare's climate-aware travel recommendations.
+                    </p>
+
+                </div>
+
+
+                <div class="feedback-rating">
+
+                    <span>
+                        Was this recommendation useful?
+                    </span>
+
+                    <div class="feedback-rating-buttons">
+
+                        <button
+                            type="button"
+                            data-rating="1"
+                        >
+                            ☆
+                        </button>
+
+                        <button
+                            type="button"
+                            data-rating="2"
+                        >
+                            ☆
+                        </button>
+
+                        <button
+                            type="button"
+                            data-rating="3"
+                        >
+                            ☆
+                        </button>
+
+                        <button
+                            type="button"
+                            data-rating="4"
+                        >
+                            ☆
+                        </button>
+
+                        <button
+                            type="button"
+                            data-rating="5"
+                        >
+                            ☆
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <textarea
+                    id="explore-feedback-text"
+                    placeholder="Tell us about your experience, suggestions or issues..."
+                    rows="4"
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    id="submit-explore-feedback"
+                    class="explore-primary-btn feedback-submit-btn"
+                >
+                    Submit Feedback
+                </button>
+
+
+                <p
+                    id="feedback-status"
+                    class="feedback-status"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BOTTOM UAE BANNER
+        ====================================================== -->
+        <section class="explore-bottom-banner">
+
+            <img
+                src="/static/images/exploreimage3.png"
+                alt="UAE desert landscape"
+            >
+
+            <div class="explore-bottom-overlay"></div>
+
+            <div class="explore-bottom-content">
+
+                <span>
+                    UNITED ARAB EMIRATES
+                </span>
+
+                <h3>
+                    Explore smarter. Travel with environmental awareness.
+                </h3>
+
+                <p>
+                    People • Places • Climate Intelligence • A Healthier Tomorrow
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- Leaflet JavaScript -->
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<!-- Explore JavaScript -->
+<script src="/static/js/explore.js?v=6"></script>
+
+</body>
+</html>

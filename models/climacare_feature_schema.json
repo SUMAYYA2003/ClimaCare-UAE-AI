@@ -1,0 +1,33 @@
+{
+    "feature_count": 28,
+    "features": [
+        "pm10",
+        "pm2_5",
+        "carbon_monoxide",
+        "nitrogen_dioxide",
+        "sulphur_dioxide",
+        "ozone",
+        "aerosol_optical_depth",
+        "dust",
+        "uv_index",
+        "us_aqi",
+        "european_aqi",
+        "temperature",
+        "humidity",
+        "wind_speed",
+        "year",
+        "month",
+        "day",
+        "day_of_week",
+        "pm2_5_lag1",
+        "pm10_lag1",
+        "us_aqi_lag1",
+        "pm2_5_roll3",
+        "pm10_roll3",
+        "us_aqi_roll3",
+        "pm_ratio",
+        "dust_wind",
+        "temp_humidity",
+        "season_encoded"
+    ]
+}

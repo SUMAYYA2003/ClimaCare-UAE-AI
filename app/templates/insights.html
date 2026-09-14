@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Insights | ClimaCare UAE AI
+    </title>
+
+    <link
+        rel="stylesheet"
+       href="/static/css/style.css?v=7"
+    >
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <!-- =========================================== -->
+    <!-- Sidebar Navigation -->
+    <!-- =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                CC
+            </div>
+
+            <div class="brand-text">
+
+                <h1>
+                    ClimaCare
+                </h1>
+
+                <span>
+                    UAE AI
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/forecast" class="nav-item">
+                <span>◉</span>
+                AI Forecast
+            </a>
+
+            <a href="/health" class="nav-item">
+                <span>♡</span>
+                Health
+            </a>
+
+            <a href="/trends" class="nav-item">
+                <span>⌁</span>
+                Trends
+            </a>
+
+            <a href="/insights" class="nav-item active">
+                <span>✦</span>
+                AI Insights
+            </a>
+            <a href="/explore" class="nav-item">
+    <span>⌖</span>
+    AI Explore
+</a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="uae-badge">
+                🇦🇪
+            </div>
+
+            <div>
+
+                <strong>
+                    Built for UAE
+                </strong>
+
+                <small>
+                    Climate-health intelligence
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================== -->
+    <!-- Main Content -->
+    <!-- =========================================== -->
+
+    <main class="main-content insights-page">
+        <img
+    src="/static/images/health-uae-cultural.png"
+    alt=""
+    class="insights-uae-cultural-art"
+    aria-hidden="true"
+>
+
+
+        <!-- ======================================= -->
+        <!-- Header -->
+        <!-- ======================================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    EXPLAINABLE AI INTELLIGENCE
+                </p>
+
+                <h2>
+                    Understand what the AI is seeing
+                </h2>
+
+                <p class="subheading">
+                    ClimaCare combines environmental data,
+                    machine-learning predictions and contextual
+                    interpretation to explain tomorrow's air-quality outlook.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="location-pill">
+
+                    <span>
+                        ●
+                    </span>
+
+                    Dubai, UAE
+
+                </div>
+
+
+                <div class="live-pill">
+
+                    <span class="live-dot"></span>
+
+                    AI Active
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================= -->
+        <!-- AI Prediction Hero -->
+        <!-- ======================================= -->
+
+        <section class="insight-hero">
+
+            <div class="insight-hero-copy">
+
+                <p class="hero-label">
+                    AI FORECAST INTERPRETATION
+                </p>
+
+                <h3 id="insight-headline">
+                    Analysing environmental signals...
+                </h3>
+
+                <p id="insight-summary">
+                    ClimaCare is combining current environmental
+                    observations with the trained prediction model
+                    to prepare an explainable insight.
+                </p>
+
+
+                <div class="insight-status-row">
+
+                    <span
+                        class="insight-status-badge"
+                        id="insight-direction"
+                    >
+                        Calculating direction
+                    </span>
+
+
+                    <span class="insight-model-badge">
+                        AI model + environmental data
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="insight-prediction-card">
+
+                <span>
+                    PREDICTED NEXT-DAY AQI
+                </span>
+
+                <strong id="insight-predicted-aqi">
+                    --
+                </strong>
+
+                <small id="insight-predicted-category">
+                    Loading prediction...
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================= -->
+        <!-- Current vs Predicted -->
+        <!-- ======================================= -->
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    FORECAST COMPARISON
+                </p>
+
+                <h3>
+                    Today compared with tomorrow
+                </h3>
+
+                <p>
+                    The AI compares the current environmental
+                    state with the next-day prediction.
+                </p>
+
+            </div>
+
+
+            <div class="insight-summary-grid">
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        Current AQI
+                    </span>
+
+                    <strong id="insight-current-aqi">
+                        --
+                    </strong>
+
+                    <small>
+                        Latest environmental reading
+                    </small>
+
+                </article>
+
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        Predicted AQI
+                    </span>
+
+                    <strong id="insight-next-aqi">
+                        --
+                    </strong>
+
+                    <small>
+                        AI next-day forecast
+                    </small>
+
+                </article>
+
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        Expected direction
+                    </span>
+
+                    <strong id="insight-change">
+                        Analysing...
+                    </strong>
+
+                    <small>
+                        Improving, stable or increasing
+                    </small>
+
+                </article>
+
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        Forecast date
+                    </span>
+
+                    <strong id="insight-forecast-date">
+                        --
+                    </strong>
+
+                    <small>
+                        Next prediction period
+                    </small>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================= -->
+        <!-- Why is AI predicting this? -->
+        <!-- ======================================= -->
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    EXPLAINABLE AI
+                </p>
+
+                <h3>
+                    Why is the AI predicting this?
+                </h3>
+
+                <p>
+                    ClimaCare reviews important environmental
+                    drivers used by the prediction pipeline.
+                </p>
+
+            </div>
+
+
+            <div class="insight-driver-grid">
+
+                <article class="insight-driver-card">
+
+                    <span class="insight-driver-icon">
+                        ◌
+                    </span>
+
+                    <small>
+                        PM2.5
+                    </small>
+
+                    <strong id="insight-pm25">
+                        --
+                    </strong>
+
+                    <p id="insight-pm25-text">
+                        Fine-particle contribution is being analysed.
+                    </p>
+
+                </article>
+
+
+                <article class="insight-driver-card">
+
+                    <span class="insight-driver-icon">
+                        ≋
+                    </span>
+
+                    <small>
+                        Dust
+                    </small>
+
+                    <strong id="insight-dust">
+                        --
+                    </strong>
+
+                    <p id="insight-dust-text">
+                        Dust influence is being analysed.
+                    </p>
+
+                </article>
+
+
+                <article class="insight-driver-card">
+
+                    <span class="insight-driver-icon">
+                        ☀
+                    </span>
+
+                    <small>
+                        Temperature
+                    </small>
+
+                    <strong id="insight-temperature">
+                        --
+                    </strong>
+
+                    <p id="insight-temperature-text">
+                        Heat-related environmental influence
+                        is being analysed.
+                    </p>
+
+                </article>
+
+
+                <article class="insight-driver-card">
+
+                    <span class="insight-driver-icon">
+                        ◇
+                    </span>
+
+                    <small>
+                        Humidity
+                    </small>
+
+                    <strong id="insight-humidity">
+                        --
+                    </strong>
+
+                    <p id="insight-humidity-text">
+                        Atmospheric moisture influence
+                        is being analysed.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================= -->
+<!-- AI Driver Ranking -->
+<!-- ======================================= -->
+
+<section class="insight-section insight-ranking-section">
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            AI DRIVER PRIORITY
+        </p>
+
+        <h3>
+            Which signals matter most right now?
+        </h3>
+
+        <p>
+            ClimaCare ranks the current environmental signals
+            according to their relevance to the prediction
+            and current exposure conditions.
+        </p>
+
+    </div>
+
+
+    <div class="ai-driver-ranking">
+
+        <article class="ai-rank-card">
+
+            <div class="ai-rank-number">
+                01
+            </div>
+
+            <div class="ai-rank-content">
+
+                <div class="ai-rank-heading">
+
+                    <div>
+                        <small>
+                            Primary signal
+                        </small>
+
+                        <strong id="insight-rank-one-name">
+                            Analysing...
+                        </strong>
+                    </div>
+
+                    <span id="insight-rank-one-level">
+                        --
+                    </span>
+
+                </div>
+
+                <div class="ai-rank-track">
+                    <div
+                        class="ai-rank-fill"
+                        id="insight-rank-one-bar"
+                    ></div>
+                </div>
+
+                <p id="insight-rank-one-text">
+                    ClimaCare is evaluating the strongest
+                    environmental signal.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="ai-rank-card">
+
+            <div class="ai-rank-number">
+                02
+            </div>
+
+            <div class="ai-rank-content">
+
+                <div class="ai-rank-heading">
+
+                    <div>
+                        <small>
+                            Secondary signal
+                        </small>
+
+                        <strong id="insight-rank-two-name">
+                            Analysing...
+                        </strong>
+                    </div>
+
+                    <span id="insight-rank-two-level">
+                        --
+                    </span>
+
+                </div>
+
+                <div class="ai-rank-track">
+                    <div
+                        class="ai-rank-fill"
+                        id="insight-rank-two-bar"
+                    ></div>
+                </div>
+
+                <p id="insight-rank-two-text">
+                    ClimaCare is evaluating the next strongest
+                    environmental signal.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="ai-rank-card">
+
+            <div class="ai-rank-number">
+                03
+            </div>
+
+            <div class="ai-rank-content">
+
+                <div class="ai-rank-heading">
+
+                    <div>
+                        <small>
+                            Supporting signal
+                        </small>
+
+                        <strong id="insight-rank-three-name">
+                            Analysing...
+                        </strong>
+                    </div>
+
+                    <span id="insight-rank-three-level">
+                        --
+                    </span>
+
+                </div>
+
+                <div class="ai-rank-track">
+                    <div
+                        class="ai-rank-fill"
+                        id="insight-rank-three-bar"
+                    ></div>
+                </div>
+
+                <p id="insight-rank-three-text">
+                    ClimaCare is evaluating an additional
+                    environmental influence.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+        <!-- ======================================= -->
+        <!-- AI Explanation -->
+        <!-- ======================================= -->
+
+        <section class="insight-explanation-card">
+
+            <div>
+
+                <p class="eyebrow">
+                    AI INTERPRETATION
+                </p>
+
+                <h3>
+                    What does the model currently suggest?
+                </h3>
+
+                <p id="insight-explanation">
+                    ClimaCare is preparing a data-driven explanation
+                    based on the current environmental observations
+                    and AI forecast.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================= -->
+        <!-- Model Validation -->
+        <!-- ======================================= -->
+
+        <section class="insight-section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    MODEL TRANSPARENCY
+                </p>
+
+                <h3>
+                    Prediction validation
+                </h3>
+
+                <p>
+                    ClimaCare exposes model checks so the user can
+                    understand whether the forecast pipeline received
+                    the expected feature structure.
+                </p>
+
+            </div>
+
+
+            <div class="insight-summary-grid">
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        Model features
+                    </span>
+
+                    <strong id="insight-feature-count">
+                        --
+                    </strong>
+
+                    <small>
+                        Features supplied to the model
+                    </small>
+
+                </article>
+
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        Missing features
+                    </span>
+
+                    <strong id="insight-missing-features">
+                        --
+                    </strong>
+
+                    <small>
+                        Input validation check
+                    </small>
+
+                </article>
+
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        Feature order
+                    </span>
+
+                    <strong id="insight-feature-order">
+                        Checking...
+                    </strong>
+
+                    <small>
+                        Model input consistency
+                    </small>
+
+                </article>
+
+
+                <article class="insight-summary-card">
+
+                    <span>
+                        AI status
+                    </span>
+
+                    <strong id="insight-ai-status">
+                        Analysing
+                    </strong>
+
+                    <small>
+                        Forecast pipeline status
+                    </small>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+<script src="/static/js/insights.js?v=2"></script>
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Trends | ClimaCare UAE AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=7"
+    >
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+   <aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+            CC
+        </div>
+
+        <div class="brand-text">
+
+            <h1>
+                ClimaCare
+            </h1>
+
+            <span>
+                UAE AI
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+        <a href="/" class="nav-item">
+            <span>⌂</span>
+            Dashboard
+        </a>
+
+        <a href="/forecast" class="nav-item">
+            <span>◉</span>
+            AI Forecast
+        </a>
+
+        <a href="/health" class="nav-item">
+            <span>♡</span>
+            Health
+        </a>
+
+        <a href="/trends" class="nav-item active">
+            <span>⌁</span>
+            Trends
+        </a>
+
+        <a href="/insights" class="nav-item">
+            <span>✦</span>
+            AI Insights
+        </a>
+
+        <a href="/explore" class="nav-item">
+    <span>⌖</span>
+    AI Explore
+</a>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <div class="uae-badge">
+            🇦🇪
+        </div>
+
+        <div>
+
+            <strong>
+                Built for UAE
+            </strong>
+
+            <small>
+                Climate-health intelligence
+            </small>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main-content trends-page">
+
+        <header class="page-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    ENVIRONMENTAL TRENDS
+                </span>
+
+                <h2>
+                    Climate & air quality patterns
+                </h2>
+
+                <p>
+                    Understand how Dubai's environmental conditions
+                    are changing over time.
+                </p>
+
+            </div>
+
+
+            <div class="header-status">
+
+                <span class="status-pill">
+                    Dubai, UAE
+                </span>
+
+                <span class="status-pill status-live">
+                    Historical + Live
+                </span>
+
+            </div>
+
+        </header>
+<section class="trends-hero">
+
+    <img
+        src="/static/images/trends-uae-hero.png"
+        alt="UAE environmental trends showing heritage, sustainability, clean energy and healthy communities"
+        class="trends-hero-image"
+    >
+
+</section>
+
+        <!-- =========================================
+             TREND SUMMARY
+             ========================================= -->
+
+        <section class="trend-summary-grid">
+
+            <article class="trend-summary-card">
+
+                <span>Current AQI</span>
+
+                <strong id="trend-current-aqi">
+                    --
+                </strong>
+
+                <small>
+                    Latest environmental reading
+                </small>
+
+            </article>
+
+
+            <article class="trend-summary-card">
+
+                <span>7-day direction</span>
+
+                <strong id="trend-direction">
+                    Analysing...
+                </strong>
+
+                <small>
+                    Improving, stable or worsening
+                </small>
+
+            </article>
+
+
+            <article class="trend-summary-card">
+
+                <span>PM2.5 pattern</span>
+
+                <strong id="trend-pm25-status">
+                    Analysing...
+                </strong>
+
+                <small>
+                    Fine-particle pollution trend
+                </small>
+
+            </article>
+
+
+            <article class="trend-summary-card">
+
+                <span>Trend period</span>
+
+                <strong>
+                    Recent history
+                </strong>
+
+                <small>
+                    Time-based environmental view
+                </small>
+
+            </article>
+
+        </section>
+<!-- =====================================================
+     RECENT 7-DAY SUMMARY
+     ===================================================== -->
+
+<div class="trend-subsection-heading">
+    <span class="section-kicker">RECENT ANALYSIS</span>
+
+    <h3>Last 7 days at a glance</h3>
+
+    <p>
+        Summary statistics calculated from the latest seven historical records.
+    </p>
+</div>
+
+<section class="trend-summary-grid">
+
+    <article class="trend-summary-card">
+        <span>7-day Avg AQI</span>
+
+        <strong id="seven-day-average-aqi">
+            --
+        </strong>
+
+        <small>
+            Average air quality index
+        </small>
+    </article>
+
+
+    <article class="trend-summary-card">
+        <span>7-day Avg PM2.5</span>
+
+        <strong id="seven-day-average-pm25">
+            --
+        </strong>
+
+        <small>
+            Average fine-particle level
+        </small>
+    </article>
+
+
+    <article class="trend-summary-card">
+        <span>Peak AQI</span>
+
+        <strong id="seven-day-peak-aqi">
+            --
+        </strong>
+
+        <small>
+            Highest reading in 7 days
+        </small>
+    </article>
+
+
+    <article class="trend-summary-card">
+        <span>Latest reading</span>
+
+        <strong id="latest-trend-date">
+            --
+        </strong>
+
+        <small>
+            Most recent historical record
+        </small>
+    </article>
+
+</section>
+
+        <!-- =========================================
+             AQI CHART
+             ========================================= -->
+
+        <section class="trend-panel">
+
+            <div class="trend-panel-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        AIR QUALITY INDEX
+                    </span>
+
+                    <h3>
+                        AQI trend over time
+                    </h3>
+
+                    <p>
+                        Daily AQI values showing recent environmental change.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trend-chart-container">
+
+                <canvas id="aqi-trend-chart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PARTICULATE MATTER
+             ========================================= -->
+
+        <section class="trend-panel">
+
+            <div class="trend-panel-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        PARTICULATE POLLUTION
+                    </span>
+
+                    <h3>
+                        PM2.5 and PM10
+                    </h3>
+
+                    <p>
+                        Compare fine and coarse particulate pollution patterns.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trend-chart-container">
+
+                <canvas id="particle-trend-chart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             INTERPRETATION
+             ========================================= -->
+
+        <section class="trend-insight-card">
+
+            <span class="section-kicker">
+                TREND INTERPRETATION
+            </span>
+
+            <h3>
+                What does the recent pattern mean?
+            </h3>
+
+            <p id="trend-insight-text">
+                ClimaCare is analysing recent environmental patterns.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="/static/js/trends.js?v=2"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{
+    "project": "ClimaCare UAE AI",
+    "model_role": "Deployment forecasting model",
+    "model_type": "RandomForestRegressor",
+    "prediction_task": "Next-day Dubai US AQI forecasting",
+    "location": "Dubai, UAE",
+    "feature_count": 28,
+    "training_samples": 1469,
+    "training_start_date": "2022-08-08",
+    "training_end_date": "2026-08-15",
+    "warning_threshold": 90,
+    "evaluation_reference": {
+        "external_r2": 0.8514475467673839,
+        "external_mae": 9.068091448189746,
+        "external_rmse": 11.142910462689251,
+        "external_warning_recall": 0.9731543624161074,
+        "external_warning_f1": 0.9415584415584416,
+        "note": "These metrics belong to the preserved evaluation model tested before the external period was added to training."
+    }
+}

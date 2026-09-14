@@ -1,0 +1,25 @@
+{
+    "project": "ClimaCare UAE AI",
+    "model_type": "RandomForestRegressor",
+    "prediction_task": "Next-day Dubai US AQI forecasting",
+    "location": "Dubai, UAE",
+    "training_end_date": "2026-02-17",
+    "external_validation_start": "2026-02-19",
+    "external_validation_end": "2026-08-15",
+    "feature_count": 28,
+    "warning_threshold": 90,
+    "risk_definition": "Actual next-day US AQI > 100",
+    "external_validation": {
+        "samples": 178,
+        "mae": 9.068091448189746,
+        "rmse": 11.142910462689251,
+        "r2": 0.8514475467673839,
+        "baseline_r2": 0.702342957221955,
+        "mae_improvement_percent": 22.11410457463793,
+        "warning_precision": 0.9119496855345912,
+        "warning_recall": 0.9731543624161074,
+        "warning_f1": 0.9415584415584416,
+        "missed_risky_days": 4,
+        "false_warnings": 14
+    }
+}

@@ -1,0 +1,601 @@
+<title>ClimaCare UAE AI</title>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ClimaCare UAE AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =============================================== -->
+    <!-- ClimaCare UAE AI -->
+    <!-- Main Application Interface -->
+    <!-- =============================================== -->
+
+
+    <div class="app-shell">
+
+
+        <!-- =========================================== -->
+        <!-- Sidebar Navigation -->
+        <!-- =========================================== -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    CC
+                </div>
+
+                <div class="brand-text">
+
+                    <h1>
+                        ClimaCare
+                    </h1>
+
+                    <span>
+                        UAE AI
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav class="navigation">
+
+    <a href="/" class="nav-item active">
+        <span>⌂</span>
+        Dashboard
+    </a>
+
+    <a href="/forecast" class="nav-item">
+        <span>◉</span>
+        AI Forecast
+    </a>
+
+    <a href="/health" class="nav-item">
+        <span>♡</span>
+        Health
+    </a>
+
+    <a href="/trends" class="nav-item">
+        <span>⌁</span>
+        Trends
+    </a>
+
+    <a href="/insights" class="nav-item">
+        <span>✦</span>
+        AI Insights
+    </a>
+
+    <a href="/explore" class="nav-item">
+        <span>⌖</span>
+        AI Explore
+    </a>
+
+</nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="uae-badge">
+                    🇦🇪
+                </div>
+
+                <div>
+
+                    <strong>
+                        Built for UAE
+                    </strong>
+
+                    <small>
+                        Climate-health intelligence
+                    </small>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================================== -->
+        <!-- Main Content -->
+        <!-- =========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- ======================================= -->
+            <!-- Top Bar -->
+            <!-- ======================================= -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="eyebrow">
+                        UAE ENVIRONMENTAL INTELLIGENCE
+                    </p>
+
+                    <h2 id="dynamic-greeting">Good afternoon
+</h2>
+
+<p class="subheading" id="live-date-time">
+    Your climate-health outlook for Dubai
+</p>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+    <div class="location-pill">
+
+        <span>
+            ●
+        </span>
+
+        Dubai, UAE
+
+    </div>
+
+
+    <div class="live-pill">
+
+        <span class="live-dot"></span>
+
+        Live
+
+    </div>
+
+
+    <!-- Logged-in user -->
+    <div class="user-account">
+
+        <div class="user-avatar">
+            {{ user_name[0] | upper if user_name else "U" }}
+        </div>
+
+        <div class="user-details">
+
+            <strong>
+                {{ user_name or "User" }}
+            </strong>
+
+            <small>
+                {{ user_email or "" }}
+            </small>
+
+        </div>
+
+
+{% if user_role == "admin" %}
+
+<a
+    href="/admin"
+    class="admin-link"
+    title="Open Admin Dashboard"
+>
+    Admin
+</a>
+
+{% endif %}
+
+        <a
+            href="/logout"
+            class="logout-link"
+            title="Sign out"
+        >
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+            </header>
+
+
+
+            <!-- ======================================= -->
+            <!-- Health Hero -->
+            <!-- ======================================= -->
+
+            <section class="hero-card">
+
+                <div class="hero-copy">
+
+                    <p class="hero-label">
+                        TODAY'S ENVIRONMENTAL HEALTH
+                    </p>
+
+
+                    <h3 id="hero-status">
+                        Analysing Dubai...
+                    </h3>
+
+
+                    <p id="hero-message">
+
+                        ClimaCare is retrieving the latest
+                        environmental conditions and preparing
+                        your AI-powered health outlook.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <button class="primary-button">
+                            View AI Forecast
+                        </button>
+
+                        <button class="secondary-button">
+                            Why this forecast?
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="aqi-visual">
+
+                    <div class="aqi-ring">
+
+                        <div>
+
+                            <span class="aqi-caption">
+                                CURRENT AQI
+                            </span>
+
+                            <strong id="current-aqi">
+                                --
+                            </strong>
+
+                            <span
+                                id="current-category"
+                                class="aqi-category"
+                            >
+                                Loading
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ======================================= -->
+            <!-- Environmental Metrics -->
+            <!-- ======================================= -->
+
+            <section class="section-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        LIVE ENVIRONMENT
+                    </p>
+
+                    <h3>
+                        Dubai right now
+                    </h3>
+
+                </div>
+
+                <span id="last-update">
+                    Updating...
+                </span>
+
+            </section>
+
+
+            <section class="metric-grid">
+
+
+                <article class="metric-card">
+
+                    <span class="metric-icon">
+                        ◌
+                    </span>
+
+                    <p>
+                        PM2.5
+                    </p>
+
+                    <strong id="pm25">
+                        --
+                    </strong>
+
+                    <small>
+                        µg/m³
+                    </small>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <span class="metric-icon">
+                        ◍
+                    </span>
+
+                    <p>
+                        PM10
+                    </p>
+
+                    <strong id="pm10">
+                        --
+                    </strong>
+
+                    <small>
+                        µg/m³
+                    </small>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <span class="metric-icon">
+                        ☀
+                    </span>
+
+                    <p>
+                        Temperature
+                    </p>
+
+                    <strong id="temperature">
+                        --
+                    </strong>
+
+                    <small>
+                        °C
+                    </small>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <span class="metric-icon">
+                        ◒
+                    </span>
+
+                    <p>
+                        Humidity
+                    </p>
+
+                    <strong id="humidity">
+                        --
+                    </strong>
+
+                    <small>
+                        %
+                    </small>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <span class="metric-icon">
+                        ≋
+                    </span>
+
+                    <p>
+                        Dust
+                    </p>
+
+                    <strong id="dust">
+                        --
+                    </strong>
+
+                    <small>
+                        µg/m³
+                    </small>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ======================================= -->
+            <!-- AI Forecast -->
+            <!-- ======================================= -->
+
+            <section class="forecast-layout">
+
+
+                <article class="forecast-card">
+
+                    <div class="forecast-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                CLIMACARE AI
+                            </p>
+
+                            <h3>
+                                Tomorrow's forecast
+                            </h3>
+
+                        </div>
+
+
+                        <span class="ai-badge">
+                            ✦ AI
+                        </span>
+
+                    </div>
+
+
+                    <div class="forecast-value">
+
+                        <div>
+
+                            <span>
+                                Predicted AQI
+                            </span>
+
+                            <strong id="forecast-aqi">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Expected condition
+                            </span>
+
+                            <strong
+                                id="forecast-category"
+                                class="forecast-category"
+                            >
+                                Loading
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="confidence-row">
+
+                        <span>
+                            Production model
+                        </span>
+
+                        <strong>
+                            28 verified features
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================== -->
+                <!-- Health Alert -->
+                <!-- =================================== -->
+
+                <article class="health-card">
+
+                    <div class="health-icon">
+                        ♡
+                    </div>
+
+
+                    <p class="eyebrow">
+                        HEALTH GUARD
+                    </p>
+
+
+                    <h3 id="health-risk">
+                        Preparing risk assessment
+                    </h3>
+
+
+                    <p id="health-advice">
+
+                        ClimaCare will provide an early-warning
+                        message based on tomorrow's predicted
+                        environmental conditions.
+
+                    </p>
+
+
+                    <div class="warning-status">
+
+                        <span id="warning-indicator">
+                            ●
+                        </span>
+
+                        <strong id="warning-text">
+                            Checking warning status
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ======================================= -->
+            <!-- AI Explanation Preview -->
+            <!-- ======================================= -->
+
+            <section class="insight-card">
+
+                <div>
+
+                    <p class="eyebrow">
+                        EXPLAINABLE AI
+                    </p>
+
+                    <h3>
+                        Why is ClimaCare predicting this?
+                    </h3>
+
+                    <p>
+
+                        The application analyses air pollution,
+                        weather, atmospheric conditions and
+                        recent environmental trends to explain
+                        the factors influencing the forecast.
+
+                    </p>
+
+                </div>
+
+
+                <button class="insight-button">
+                    Explore AI reasoning →
+                </button>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="/static/js/app.js"></script>
+
+</body>
+
+</html>

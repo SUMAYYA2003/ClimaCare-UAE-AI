@@ -1,0 +1,29 @@
+rank,feature,display_name,feature_group,importance_mean,importance_std
+1,pm2_5,Fine Particulate Matter (PM2.5),Air Pollution,1.278929239124039,0.10908043078785298
+2,ozone,Ground-Level Ozone,Air Pollution,0.02151936087680127,0.008841105425996932
+3,us_aqi,Current Air Quality Index,Air Quality,0.016317959012380073,0.00306798089714239
+4,temperature,Temperature,Weather,0.009484862725507226,0.0024048578783696867
+5,uv_index,UV Index,Climate / Exposure,0.008762926618541573,0.0026530618382997304
+6,pm10,Particulate Matter (PM10),Air Pollution,0.003912887633963353,0.0010094501953633152
+7,aerosol_optical_depth,Atmospheric Aerosol Load,Atmosphere,0.00318254823349321,0.0009286364409053285
+8,sulphur_dioxide,Sulphur Dioxide,Air Pollution,0.002426428415820464,0.00110931900736475
+9,nitrogen_dioxide,Nitrogen Dioxide,Air Pollution,0.0021073415614718816,0.0013898860896079902
+10,us_aqi_roll3,3-Day AQI Trend,Historical Trend,0.0019582948756449005,0.0008893466347701962
+11,european_aqi,European AQI Indicator,Air Quality,0.0016424683095863867,0.0008486688742571815
+12,humidity,Relative Humidity,Weather,0.0009042317839541014,0.001178367677949508
+13,wind_speed,Wind Speed,Weather,0.0006908104008431448,0.0018987600436586132
+14,pm10_lag1,Previous-Day PM10,Historical Pollution,0.00038385752065259735,0.0005530003134522111
+15,day,Day of Month,Temporal,0.00030433775555526734,0.0005526014919046428
+16,season_encoded,Season,Temporal,8.141203263629659e-05,0.00010066811618776077
+17,us_aqi_lag1,Previous-Day AQI,Historical Air Quality,3.524525565619663e-05,0.0014273149451775394
+18,year,Year,Temporal,-3.3306690738754695e-17,7.928578270080921e-17
+19,month,Month,Temporal,-0.00015205540772293414,0.00023884762587864528
+20,day_of_week,Day of Week,Temporal,-0.0003695960382784247,0.000409083055847706
+21,carbon_monoxide,Carbon Monoxide,Air Pollution,-0.00042695015049207805,0.000737887089183769
+22,dust,Dust Concentration,Dust / Atmosphere,-0.0005832883187013582,0.00035391055793984876
+23,pm10_roll3,3-Day PM10 Trend,Historical Trend,-0.0007392318076971383,0.0020380821412783762
+24,pm_ratio,Fine-to-Coarse Particle Ratio,Engineered Environmental,-0.0008161651524177749,0.00034631008994118905
+25,temp_humidity,Temperature-Humidity Interaction,Engineered Environmental,-0.0009475227939792552,0.0012028906792844515
+26,pm2_5_lag1,Previous-Day PM2.5,Historical Pollution,-0.001963120905530957,0.0008037505086850049
+27,dust_wind,Dust-Wind Interaction,Engineered Environmental,-0.0022524426689075894,0.0011805840630752166
+28,pm2_5_roll3,3-Day PM2.5 Trend,Historical Trend,-0.003363159257981946,0.0008615119731455372

@@ -1,0 +1,2807 @@
+/* =========================================================
+   ClimaCare UAE AI
+   Core Visual System
+   ========================================================= */
+
+:root {
+    --bg-main: #f4f7f5;
+    --bg-soft: #eef3f0;
+    --surface: rgba(255, 255, 255, 0.82);
+    --surface-strong: #ffffff;
+
+    --text-main: #15211c;
+    --text-soft: #66736d;
+
+    --uae-red: #d71920;
+    --uae-green: #0b8f55;
+    --uae-black: #111111;
+    --uae-gold: #c6a35b;
+
+    --border-soft: rgba(21, 33, 28, 0.08);
+
+    --shadow-soft:
+        0 18px 50px rgba(22, 37, 31, 0.08);
+
+    --shadow-card:
+        0 10px 30px rgba(22, 37, 31, 0.07);
+
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 16px;
+}
+
+
+/* =========================================================
+   Global reset
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(11, 143, 85, 0.08),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            rgba(215, 25, 32, 0.06),
+            transparent 28%
+        ),
+        var(--bg-main);
+
+    color: var(--text-main);
+}
+
+
+/* =========================================================
+   Main application shell
+   ========================================================= */
+
+.app-shell {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+}
+
+
+/* =========================================================
+   Sidebar
+   ========================================================= */
+
+.sidebar {
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+
+    padding: 28px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(247, 250, 248, 0.93)
+        );
+
+    border-right: 1px solid var(--border-soft);
+
+    backdrop-filter: blur(18px);
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 42px;
+}
+
+
+.brand-mark {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--uae-green),
+            #087044
+        );
+
+    color: white;
+
+    font-weight: 800;
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 10px 24px rgba(11, 143, 85, 0.22);
+}
+
+
+.brand-text h1 {
+    font-size: 19px;
+    line-height: 1.1;
+}
+
+
+.brand-text span {
+    display: inline-block;
+
+    margin-top: 3px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    color: var(--uae-red);
+}
+
+
+/* =========================================================
+   Sidebar navigation
+   ========================================================= */
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.nav-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 14px;
+
+    border: 0;
+    border-radius: 14px;
+
+    background: transparent;
+
+    color: var(--text-soft);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.nav-item:hover {
+    background: rgba(11, 143, 85, 0.06);
+
+    color: var(--text-main);
+
+    transform: translateX(3px);
+}
+
+
+.nav-item.active {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 143, 85, 0.12),
+            rgba(11, 143, 85, 0.05)
+        );
+
+    color: var(--uae-green);
+}
+
+
+.nav-item span {
+    width: 24px;
+
+    font-size: 18px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   Sidebar footer
+   ========================================================= */
+
+.sidebar-footer {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(215, 25, 32, 0.06),
+            rgba(11, 143, 85, 0.07)
+        );
+
+    border: 1px solid var(--border-soft);
+}
+
+
+.uae-badge {
+    font-size: 26px;
+}
+
+
+.sidebar-footer strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+
+.sidebar-footer small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   Main content base
+   ========================================================= */
+
+.main-content {
+    width: 100%;
+
+    padding: 34px 40px 60px;
+}
+
+
+/* =========================================================
+   Responsive base
+   ========================================================= */
+
+@media (max-width: 980px) {
+
+    .app-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        flex-direction: row;
+        align-items: center;
+
+        padding: 16px 20px;
+
+        overflow-x: auto;
+    }
+
+    .brand {
+        margin-bottom: 0;
+        margin-right: 24px;
+    }
+
+    .navigation {
+        flex-direction: row;
+    }
+
+    .nav-item {
+        width: auto;
+        white-space: nowrap;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        padding: 24px 20px 50px;
+    }
+}
+
+
+@media (max-width: 640px) {
+
+    .brand-text {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 11px 12px;
+        font-size: 0;
+    }
+
+    .nav-item span {
+        font-size: 19px;
+    }
+
+    .main-content {
+        padding:
+            20px
+            14px
+            40px;
+    }
+}
+/* =========================================================
+   Topbar
+   ========================================================= */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    margin-bottom: 7px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.6px;
+
+    color: var(--uae-green);
+}
+
+.topbar h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.1;
+}
+
+.subheading {
+    margin-top: 8px;
+
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.location-pill,
+.live-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    border-radius: 999px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border-soft);
+
+    box-shadow: var(--shadow-card);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.location-pill span {
+    color: var(--uae-red);
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--uae-green);
+
+    box-shadow:
+        0 0 0 5px rgba(11, 143, 85, 0.10);
+
+    animation: livePulse 1.8s infinite;
+}
+
+@keyframes livePulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.65;
+    }
+}
+
+
+/* =========================================================
+   Hero card
+   ========================================================= */
+
+.hero-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+
+    gap: 30px;
+
+    overflow: hidden;
+
+    padding: 34px;
+
+    margin-bottom: 34px;
+
+    border-radius: var(--radius-xl);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(239, 247, 243, 0.92)
+        );
+
+    border: 1px solid var(--border-soft);
+
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-card::before {
+    content: "";
+
+    position: absolute;
+    top: -90px;
+    right: -70px;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(11, 143, 85, 0.17),
+            transparent 68%
+        );
+}
+
+.hero-card::after {
+    content: "";
+
+    position: absolute;
+    bottom: -100px;
+    left: 35%;
+
+    width: 230px;
+    height: 230px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(215, 25, 32, 0.08),
+            transparent 70%
+        );
+}
+
+.hero-copy,
+.aqi-visual {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-label {
+    margin-bottom: 12px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.7px;
+
+    color: var(--uae-red);
+}
+
+.hero-copy h3 {
+    max-width: 650px;
+
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.05;
+}
+
+.hero-copy > p:not(.hero-label) {
+    max-width: 620px;
+
+    margin-top: 16px;
+
+    color: var(--text-soft);
+
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 26px;
+}
+
+.primary-button,
+.secondary-button,
+.insight-button {
+    border: 0;
+
+    border-radius: 14px;
+
+    padding: 13px 18px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.primary-button {
+    background:
+        linear-gradient(
+            135deg,
+            var(--uae-green),
+            #087044
+        );
+
+    color: white;
+
+    box-shadow:
+        0 10px 22px rgba(11, 143, 85, 0.22);
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.8);
+
+    color: var(--text-main);
+
+    border: 1px solid var(--border-soft);
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.insight-button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   AQI ring
+   ========================================================= */
+
+.aqi-visual {
+    display: grid;
+    place-items: center;
+}
+
+.aqi-ring {
+    width: 220px;
+    aspect-ratio: 1;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            var(--uae-red) 0deg 230deg,
+            rgba(215, 25, 32, 0.10) 230deg 360deg
+        );
+
+    box-shadow:
+        0 20px 50px rgba(32, 48, 40, 0.14);
+
+    position: relative;
+}
+
+.aqi-ring::before {
+    content: "";
+
+    position: absolute;
+
+    width: 172px;
+    height: 172px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        inset 0 0 0 1px var(--border-soft);
+}
+
+.aqi-ring > div {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aqi-caption {
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    color: var(--text-soft);
+}
+
+.aqi-ring strong {
+    margin: 4px 0;
+
+    font-size: 54px;
+    line-height: 1;
+
+    color: var(--uae-red);
+}
+
+.aqi-category {
+    font-size: 12px;
+    font-weight: 800;
+
+    color: var(--text-main);
+}
+
+
+/* =========================================================
+   Section header
+   ========================================================= */
+
+.section-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+.section-header h3 {
+    font-size: 24px;
+}
+
+.section-header > span {
+    font-size: 12px;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   Metric cards
+   ========================================================= */
+
+.metric-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 34px;
+}
+
+.metric-card {
+    padding: 20px;
+
+    border-radius: var(--radius-lg);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border-soft);
+
+    box-shadow: var(--shadow-card);
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 35px rgba(22, 37, 31, 0.10);
+}
+
+.metric-icon {
+    display: inline-grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 18px;
+
+    border-radius: 12px;
+
+    background: rgba(11, 143, 85, 0.08);
+
+    color: var(--uae-green);
+
+    font-size: 18px;
+}
+
+.metric-card p {
+    margin-bottom: 7px;
+
+    color: var(--text-soft);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.metric-card strong {
+    font-size: 29px;
+}
+
+.metric-card small {
+    margin-left: 4px;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   Forecast + Health layout
+   ========================================================= */
+
+.forecast-layout {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+
+    gap: 18px;
+
+    margin-bottom: 34px;
+}
+
+.forecast-card,
+.health-card,
+.insight-card {
+    border-radius: var(--radius-xl);
+
+    border: 1px solid var(--border-soft);
+
+    box-shadow: var(--shadow-card);
+}
+
+.forecast-card {
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(241, 247, 244, 0.90)
+        );
+}
+
+.forecast-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 18px;
+}
+
+.forecast-heading h3 {
+    font-size: 24px;
+}
+
+.ai-badge {
+    padding: 8px 11px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 143, 85, 0.12),
+            rgba(198, 163, 91, 0.12)
+        );
+
+    color: var(--uae-green);
+
+    font-size: 12px;
+    font-weight: 850;
+}
+
+.forecast-value {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+.forecast-value > div {
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    border: 1px solid var(--border-soft);
+}
+
+.forecast-value span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+
+    color: var(--text-soft);
+}
+
+.forecast-value strong {
+    font-size: 32px;
+}
+
+.forecast-category {
+    font-size: 18px !important;
+}
+
+.confidence-row {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 14px;
+
+    margin-top: 18px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--border-soft);
+
+    font-size: 12px;
+
+    color: var(--text-soft);
+}
+
+.confidence-row strong {
+    color: var(--text-main);
+}
+
+
+/* =========================================================
+   Health card
+   ========================================================= */
+
+.health-card {
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 251, 249, 0.96),
+            rgba(255, 242, 240, 0.86)
+        );
+}
+
+.health-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 16px;
+
+    background: rgba(215, 25, 32, 0.10);
+
+    color: var(--uae-red);
+
+    font-size: 23px;
+}
+
+.health-card h3 {
+    font-size: 23px;
+}
+
+.health-card > p:not(.eyebrow) {
+    margin-top: 13px;
+
+    color: var(--text-soft);
+
+    line-height: 1.65;
+}
+
+.warning-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 22px;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    background: rgba(215, 25, 32, 0.06);
+
+    font-size: 12px;
+}
+
+.warning-status span {
+    color: var(--uae-red);
+}
+
+
+/* =========================================================
+   Explainable AI card
+   ========================================================= */
+
+.insight-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18, 26, 23, 0.96),
+            rgba(28, 46, 38, 0.96)
+        );
+
+    color: white;
+}
+
+.insight-card .eyebrow {
+    color: #8ed5b2;
+}
+
+.insight-card h3 {
+    margin-bottom: 10px;
+
+    font-size: 24px;
+}
+
+.insight-card p:not(.eyebrow) {
+    max-width: 690px;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    line-height: 1.65;
+}
+
+.insight-button {
+    flex-shrink: 0;
+
+    background: white;
+
+    color: var(--text-main);
+}
+
+
+/* =========================================================
+   Responsive dashboard
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+    .metric-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .topbar,
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hero-card {
+        grid-template-columns: 1fr;
+    }
+
+    .aqi-visual {
+        justify-content: start;
+    }
+
+    .forecast-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .insight-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 640px) {
+
+    .topbar-actions {
+        width: 100%;
+
+        flex-wrap: wrap;
+    }
+
+    .hero-card {
+        padding: 24px 20px;
+    }
+
+    .aqi-ring {
+        width: 180px;
+    }
+
+    .aqi-ring::before {
+        width: 140px;
+        height: 140px;
+    }
+
+    .aqi-ring strong {
+        font-size: 44px;
+    }
+
+    .metric-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .forecast-value {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .metric-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================================================
+   CLIMACARE FORECAST GUIDANCE
+   ========================================================= */
+
+.forecast-guidance-section {
+    margin-top: 32px;
+    padding: 30px;
+    border: 1px solid rgba(20, 80, 55, 0.08);
+    border-radius: 28px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(15, 148, 87, 0.08),
+            transparent 35%
+        ),
+        #ffffff;
+    box-shadow: 0 14px 40px rgba(18, 49, 38, 0.06);
+}
+
+.guidance-heading {
+    margin-bottom: 24px;
+}
+
+.guidance-heading .section-kicker {
+    display: block;
+    margin-bottom: 7px;
+    color: #0b8f55;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.guidance-heading h2 {
+    margin: 0;
+    color: #14241e;
+    font-size: 28px;
+    line-height: 1.15;
+}
+
+.guidance-heading p {
+    max-width: 650px;
+    margin: 9px 0 0;
+    color: #66736e;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.guidance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.guidance-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    min-height: 135px;
+    padding: 20px;
+    border: 1px solid #e7ece9;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.guidance-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(11, 143, 85, 0.22);
+    box-shadow: 0 12px 28px rgba(18, 49, 38, 0.08);
+}
+
+.guidance-icon {
+    display: flex;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #edf8f2;
+    color: #0b8f55;
+}
+
+.guidance-icon svg {
+    width: 21px;
+    height: 21px;
+    stroke-width: 1.9;
+}
+
+.guidance-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #73807b;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.guidance-card strong {
+    display: block;
+    color: #17251f;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.guidance-message {
+    position: relative;
+    margin-top: 18px;
+    padding: 18px 20px 18px 24px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #f3f8f5;
+    color: #43534c;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.guidance-message::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: #0b8f55;
+    content: "";
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .guidance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guidance-card {
+        min-height: auto;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .forecast-guidance-section {
+        margin-top: 22px;
+        padding: 20px 16px;
+        border-radius: 22px;
+    }
+
+    .guidance-heading h2 {
+        font-size: 23px;
+    }
+
+    .guidance-heading p {
+        font-size: 14px;
+    }
+
+    .guidance-grid {
+        gap: 12px;
+    }
+
+    .guidance-card {
+        padding: 16px;
+        border-radius: 17px;
+    }
+
+    .guidance-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+
+    .guidance-card strong {
+        font-size: 15px;
+    }
+
+    .guidance-message {
+        margin-top: 14px;
+        padding: 16px 16px 16px 20px;
+        font-size: 13px;
+    }
+}
+/* ClimaCare guidance image */
+
+.guidance-image-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0 24px;
+    overflow: hidden;
+    border-radius: 22px;
+}
+
+.guidance-image {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 22px;
+}
+
+@media (max-width: 600px) {
+    .guidance-image-wrap {
+        margin: 16px 0 20px;
+        border-radius: 18px;
+    }
+
+    .guidance-image {
+        max-width: 100%;
+        border-radius: 18px;
+    }
+}
+/* =========================================================
+   CLIMACARE TRENDS PAGE
+   ========================================================= */
+
+.trends-page {
+    padding-bottom: 60px;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.page-header h2 {
+    margin: 7px 0 8px;
+    color: #14241e;
+    font-size: 38px;
+    line-height: 1.1;
+}
+
+.page-header p {
+    max-width: 650px;
+    margin: 0;
+    color: #66736e;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.header-status {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid #e4ebe7;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #26352f;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.status-live {
+    color: #0b8f55;
+}
+
+
+/* Summary cards */
+
+.trend-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.trend-summary-card {
+    padding: 22px;
+    border: 1px solid #e6ece8;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(18, 49, 38, 0.05);
+}
+
+.trend-summary-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: #75817c;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.trend-summary-card strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #16251f;
+    font-size: 27px;
+    line-height: 1.2;
+}
+
+.trend-summary-card small {
+    color: #7b8782;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+
+/* Chart panels */
+
+.trend-panel {
+    margin-bottom: 26px;
+    padding: 28px;
+    border: 1px solid #e6ece8;
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 14px 36px rgba(18, 49, 38, 0.05);
+}
+
+.trend-panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.trend-panel-heading h3 {
+    margin: 6px 0 7px;
+    color: #15251f;
+    font-size: 26px;
+}
+
+.trend-panel-heading p {
+    margin: 0;
+    color: #74807b;
+    font-size: 14px;
+}
+
+.trend-chart-container {
+    position: relative;
+    width: 100%;
+    min-height: 340px;
+    padding: 16px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #f7faf8;
+}
+
+.trend-chart-container canvas {
+    width: 100% !important;
+    height: 310px !important;
+}
+
+
+/* Interpretation */
+
+.trend-insight-card {
+    margin-top: 26px;
+    padding: 30px;
+    border-radius: 28px;
+    background:
+        linear-gradient(
+            135deg,
+            #17342a,
+            #213f34
+        );
+    color: #ffffff;
+}
+
+.trend-insight-card .section-kicker {
+    color: #7fe1ae;
+}
+
+.trend-insight-card h3 {
+    margin: 7px 0 10px;
+    font-size: 27px;
+}
+
+.trend-insight-card p {
+    max-width: 800px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TRENDS TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .trend-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .page-header {
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================================
+   TRENDS MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .page-header h2 {
+        font-size: 30px;
+    }
+
+    .trend-summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .trend-summary-card {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .trend-panel {
+        padding: 20px 16px;
+        border-radius: 22px;
+    }
+
+    .trend-panel-heading h3 {
+        font-size: 22px;
+    }
+
+    .trend-chart-container {
+        min-height: 280px;
+        padding: 10px;
+    }
+
+    .trend-chart-container canvas {
+        height: 260px !important;
+    }
+
+    .trend-insight-card {
+        padding: 22px 18px;
+        border-radius: 22px;
+    }
+}
+/* =========================================================
+   UAE TRENDS HERO IMAGE
+   ========================================================= */
+
+.trends-hero {
+    width: 100%;
+    margin: 0 0 28px;
+    overflow: hidden;
+    border: 1px solid rgba(18, 70, 50, 0.08);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 14px 38px rgba(18, 49, 38, 0.06);
+}
+
+.trends-hero-image {
+    display: block;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .trends-hero {
+        margin-bottom: 20px;
+        border-radius: 20px;
+    }
+
+    .trends-hero-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* =========================================
+   Trends — Recent 7-day analysis heading
+   ========================================= */
+
+.trend-subsection-heading {
+    margin: 34px 0 18px;
+}
+
+.trend-subsection-heading .section-kicker {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.trend-subsection-heading h3 {
+    margin: 0 0 6px;
+    font-size: 1.55rem;
+    line-height: 1.2;
+}
+
+.trend-subsection-heading p {
+    margin: 0;
+    max-width: 680px;
+    line-height: 1.6;
+    opacity: 0.72;
+}
+
+/* =========================================================
+   CLIMACARE PREMIUM SIDEBAR POLISH
+   ========================================================= */
+
+.sidebar {
+    padding: 28px 20px 24px;
+    background: rgba(255, 255, 255, 0.96);
+    border-right: 1px solid rgba(17, 82, 57, 0.08);
+}
+
+.brand-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 42px;
+}
+
+.brand-logo {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #14a565,
+            #087a49
+        );
+
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+
+    box-shadow:
+        0 12px 26px rgba(8, 122, 73, 0.20);
+}
+
+.brand-block h1 {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.1;
+    color: #14251f;
+    font-weight: 800;
+}
+
+.brand-block span {
+    display: block;
+    margin-top: 4px;
+
+    color: #d91f2d;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    min-height: 52px;
+    padding: 0 15px;
+
+    border-radius: 16px;
+
+    color: #687970;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 650;
+
+    transition:
+        background 0.22s ease,
+        color 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.nav-item:hover {
+    color: #087f4c;
+    background: rgba(12, 145, 84, 0.07);
+    transform: translateX(3px);
+}
+
+.nav-icon {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    color: inherit;
+
+    transition:
+        background 0.22s ease,
+        color 0.22s ease;
+}
+
+.nav-item.active {
+    color: #07854f;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 143, 83, 0.13),
+            rgba(11, 143, 83, 0.05)
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(11, 143, 83, 0.05);
+}
+
+.nav-item.active .nav-icon {
+    background: rgba(10, 145, 84, 0.10);
+    color: #07854f;
+}
+
+/* =========================================================
+   CLIMACARE UAE AI — HEALTH PAGE
+   ========================================================= */
+
+.health-page {
+    padding-bottom: 70px;
+}
+
+
+/* Health risk hero */
+
+.health-risk-hero {
+    margin-top: 28px;
+    padding: 34px;
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 143, 83, 0.10),
+            rgba(255, 255, 255, 0.96)
+        );
+
+    border: 1px solid rgba(21, 33, 28, 0.08);
+    box-shadow: var(--shadow-soft);
+}
+
+.health-risk-hero .hero-label {
+    margin-bottom: 12px;
+    color: var(--uae-red);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.health-risk-hero h3 {
+    margin: 0 0 10px;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.08;
+    color: var(--text-main);
+}
+
+.health-risk-hero > p {
+    max-width: 760px;
+    color: var(--text-soft);
+    line-height: 1.65;
+}
+
+
+/* AQI status */
+
+.health-score-card {
+    margin-top: 24px;
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 190px;
+    padding: 20px 24px;
+
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(21, 33, 28, 0.08);
+    border-radius: 20px;
+}
+
+.health-score-card span {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--text-soft);
+}
+
+.health-score-card strong {
+    margin: 7px 0 2px;
+    font-size: 38px;
+    line-height: 1;
+    color: var(--text-main);
+}
+
+.health-score-card small {
+    color: var(--text-soft);
+    font-weight: 600;
+}
+
+
+/* Environmental factors */
+
+.health-indicators-section,
+.health-guidance-section {
+    margin-top: 34px;
+}
+
+.health-indicators-section .section-heading,
+.health-guidance-section .section-heading {
+    margin-bottom: 20px;
+}
+
+.health-indicators-section .section-heading h3,
+.health-guidance-section .section-heading h3 {
+    margin: 5px 0 6px;
+    font-size: 27px;
+    color: var(--text-main);
+}
+
+.health-indicators-section .section-heading p,
+.health-guidance-section .section-heading p {
+    color: var(--text-soft);
+    line-height: 1.55;
+}
+
+.health-indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.health-indicator-card {
+    padding: 24px;
+    min-height: 190px;
+
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(21, 33, 28, 0.08);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.health-indicator-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(22, 37, 31, 0.10);
+}
+
+.health-indicator-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    margin-bottom: 18px;
+
+    border-radius: 13px;
+    background: rgba(11, 143, 83, 0.10);
+    color: var(--uae-green);
+
+    font-size: 20px;
+}
+
+.health-indicator-card small {
+    display: block;
+    color: var(--text-soft);
+    font-weight: 700;
+}
+
+.health-indicator-card strong {
+    display: block;
+    margin: 7px 0 10px;
+    font-size: 27px;
+    color: var(--text-main);
+}
+
+.health-indicator-card p {
+    color: var(--text-soft);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+
+/* Health Guard */
+
+.health-guidance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.health-guidance-card {
+    display: flex;
+    gap: 18px;
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(21, 33, 28, 0.08);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.health-guidance-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(22, 37, 31, 0.10);
+}
+
+.health-guidance-icon {
+    flex: 0 0 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 14px;
+    background: rgba(11, 143, 83, 0.10);
+    color: var(--uae-green);
+
+    font-size: 21px;
+}
+
+.health-guidance-card small {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-soft);
+    font-weight: 700;
+}
+
+.health-guidance-card strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--text-main);
+}
+
+.health-guidance-card p {
+    color: var(--text-soft);
+    line-height: 1.55;
+    font-size: 14px;
+}
+
+
+/* Responsive Health page */
+
+@media (max-width: 1050px) {
+
+    .health-indicators-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+
+    .health-risk-hero {
+        padding: 24px;
+    }
+
+    .health-indicators-grid,
+    .health-guidance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .health-guidance-card {
+        padding: 20px;
+    }
+}
+
+/* =========================================================
+   CLIMACARE UAE AI — AI INSIGHTS PAGE
+   ========================================================= */
+
+.insights-page {
+    padding-bottom: 72px;
+}
+
+
+/* ---------------------------------------------------------
+   AI prediction hero
+   --------------------------------------------------------- */
+
+.insight-hero {
+    margin-top: 28px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 24px;
+    align-items: stretch;
+
+    padding: 34px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 143, 83, 0.11),
+            rgba(255, 255, 255, 0.96)
+        );
+
+    border: 1px solid rgba(21, 33, 28, 0.08);
+
+    box-shadow: var(--shadow-soft);
+}
+
+
+.insight-hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.insight-hero .hero-label {
+    margin-bottom: 10px;
+
+    color: var(--uae-red);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+
+.insight-hero h3 {
+    margin: 0 0 12px;
+
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.08;
+
+    color: var(--text-main);
+}
+
+
+.insight-hero-copy > p {
+    max-width: 760px;
+
+    color: var(--text-soft);
+
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+
+.insight-status-row {
+    margin-top: 22px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.insight-status-badge,
+.insight-model-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 36px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+
+.insight-status-badge {
+    color: #087854;
+    background: rgba(11, 143, 83, 0.10);
+}
+
+
+.insight-model-badge {
+    color: var(--text-soft);
+    background: rgba(255, 255, 255, 0.85);
+
+    border: 1px solid rgba(21, 33, 28, 0.07);
+}
+
+
+/* Prediction AQI card */
+
+.insight-prediction-card {
+    min-height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 26px;
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid rgba(21, 33, 28, 0.08);
+
+    box-shadow: var(--shadow-card);
+}
+
+
+.insight-prediction-card span {
+    color: var(--text-soft);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+
+.insight-prediction-card strong {
+    margin: 14px 0 8px;
+
+    font-size: 56px;
+    line-height: 1;
+
+    color: var(--text-main);
+}
+
+
+.insight-prediction-card small {
+    color: var(--text-soft);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* ---------------------------------------------------------
+   General insight sections
+   --------------------------------------------------------- */
+
+.insight-section {
+    margin-top: 36px;
+}
+
+
+.insight-section .section-heading {
+    margin-bottom: 18px;
+}
+
+
+.insight-section .section-heading h3 {
+    margin: 4px 0 7px;
+
+    font-size: 28px;
+    line-height: 1.15;
+
+    color: var(--text-main);
+}
+
+
+.insight-section .section-heading > p:last-child {
+    max-width: 760px;
+
+    color: var(--text-soft);
+
+    line-height: 1.55;
+}
+
+
+/* ---------------------------------------------------------
+   Today vs tomorrow / validation cards
+   --------------------------------------------------------- */
+
+.insight-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+
+.insight-summary-card {
+    min-height: 165px;
+
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid rgba(21, 33, 28, 0.08);
+
+    box-shadow: var(--shadow-card);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+
+.insight-summary-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 34px rgba(22, 37, 31, 0.10);
+}
+
+
+.insight-summary-card span {
+    display: block;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+
+.insight-summary-card strong {
+    display: block;
+
+    margin: 10px 0 8px;
+
+    color: var(--text-main);
+
+    font-size: 28px;
+    line-height: 1.15;
+}
+
+
+.insight-summary-card small {
+    color: var(--text-soft);
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+
+/* ---------------------------------------------------------
+   Explainable AI environmental drivers
+   --------------------------------------------------------- */
+
+.insight-driver-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+
+.insight-driver-card {
+    min-height: 235px;
+
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid rgba(21, 33, 28, 0.08);
+
+    box-shadow: var(--shadow-card);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+
+.insight-driver-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 34px rgba(22, 37, 31, 0.10);
+}
+
+
+.insight-driver-icon {
+    width: 44px;
+    height: 44px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: rgba(11, 143, 83, 0.10);
+
+    color: var(--uae-green);
+
+    font-size: 21px;
+}
+
+
+.insight-driver-card small {
+    display: block;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+
+.insight-driver-card strong {
+    display: block;
+
+    margin: 7px 0 12px;
+
+    color: var(--text-main);
+
+    font-size: 26px;
+    line-height: 1.15;
+}
+
+
+.insight-driver-card p {
+    color: var(--text-soft);
+
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+
+/* ---------------------------------------------------------
+   Main AI explanation
+   --------------------------------------------------------- */
+
+.insight-explanation-card {
+    margin-top: 36px;
+
+    padding: 32px;
+
+    border-radius: 26px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #123d2f,
+            #174c3a
+        );
+
+    box-shadow:
+        0 18px 42px rgba(18, 61, 47, 0.20);
+}
+
+
+.insight-explanation-card .eyebrow {
+    color: #7fe0ad;
+}
+
+
+.insight-explanation-card h3 {
+    margin: 6px 0 12px;
+
+    font-size: 29px;
+    line-height: 1.2;
+
+    color: #ffffff;
+}
+
+
+.insight-explanation-card p:last-child {
+    max-width: 900px;
+
+    color: rgba(255, 255, 255, 0.84);
+
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+
+/* ---------------------------------------------------------
+   Responsive AI Insights
+   --------------------------------------------------------- */
+
+@media (max-width: 1150px) {
+
+    .insight-summary-grid,
+    .insight-driver-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .insight-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .insight-prediction-card {
+        min-height: 180px;
+    }
+}
+
+
+@media (max-width: 680px) {
+
+    .insight-hero {
+        padding: 24px;
+    }
+
+    .insight-summary-grid,
+    .insight-driver-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .insight-explanation-card {
+        padding: 24px;
+    }
+
+    .insight-hero h3 {
+        font-size: 30px;
+    }
+}
+
+/* =========================================================
+   HEALTH HERO REDESIGN
+   ========================================================= */
+
+.health-risk-hero-redesign {
+    margin-top: 28px;
+    padding: 34px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+    gap: 30px;
+    align-items: center;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 143, 83, 0.10),
+            rgba(255, 255, 255, 0.96)
+        );
+
+    border: 1px solid rgba(21, 33, 28, 0.08);
+
+    box-shadow: var(--shadow-soft);
+}
+
+
+.health-risk-copy {
+    min-width: 0;
+}
+
+
+.health-risk-copy .hero-label {
+    margin-bottom: 12px;
+
+    color: var(--uae-red);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+
+.health-risk-copy h3 {
+    margin: 0 0 14px;
+
+    max-width: 800px;
+
+    font-size: clamp(30px, 3.7vw, 44px);
+    line-height: 1.08;
+
+    color: var(--text-main);
+}
+
+
+.health-risk-copy > p:not(.hero-label) {
+    max-width: 790px;
+
+    color: var(--text-soft);
+
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+.health-risk-badges {
+    margin-top: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.health-status-badge,
+.health-live-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 36px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+
+.health-status-badge {
+    color: #087854;
+    background: rgba(11, 143, 83, 0.11);
+}
+
+
+.health-live-badge {
+    color: var(--text-soft);
+    background: rgba(255, 255, 255, 0.85);
+
+    border: 1px solid rgba(21, 33, 28, 0.07);
+}
+
+
+/* Right side */
+
+.health-risk-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+}
+
+
+/* AQI circular visual */
+
+.health-aqi-ring {
+    width: 220px;
+    height: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #ef7c1a 0deg 250deg,
+            rgba(21, 33, 28, 0.08) 250deg 360deg
+        );
+
+    box-shadow:
+        0 18px 35px rgba(22, 37, 31, 0.10);
+}
+
+
+.health-aqi-ring-inner {
+    width: 166px;
+    height: 166px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 16px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+}
+
+
+.health-aqi-ring-inner span {
+    color: var(--text-soft);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.10em;
+}
+
+
+.health-aqi-ring-inner strong {
+    margin: 8px 0 5px;
+
+    color: #ef7c1a;
+
+    font-size: 52px;
+    line-height: 1;
+}
+
+
+.health-aqi-ring-inner small {
+    max-width: 130px;
+
+    color: var(--text-main);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+/* Health focus card */
+
+.health-risk-note {
+    width: 100%;
+
+    padding: 18px 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid rgba(21, 33, 28, 0.08);
+
+    box-shadow: var(--shadow-card);
+}
+
+
+.health-risk-note span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--uae-green);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.10em;
+}
+
+
+.health-risk-note strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text-main);
+
+    font-size: 17px;
+    line-height: 1.35;
+}
+
+
+.health-risk-note p {
+    color: var(--text-soft);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* Make environmental cards compact */
+
+.health-indicator-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+
+.health-indicator-card {
+    min-height: 190px;
+    padding: 22px;
+
+    border-radius: 22px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1050px) {
+
+    .health-risk-hero-redesign {
+        grid-template-columns: 1fr;
+    }
+
+    .health-risk-visual {
+        width: 100%;
+    }
+
+    .health-indicator-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .health-risk-hero-redesign {
+        padding: 24px;
+    }
+
+    .health-indicator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .health-aqi-ring {
+        width: 190px;
+        height: 190px;
+    }
+
+    .health-aqi-ring-inner {
+        width: 145px;
+        height: 145px;
+    }
+}
