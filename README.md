@@ -241,3 +241,46 @@ B.Tech Computer Science & Engineering
 ### 🌱 ClimaCare UAE AI
 
 **Turning environmental data into understandable, actionable climate-health intelligence.**
+
+---
+
+## 🖥️ Application Preview
+
+The ClimaCare UAE AI web application brings together live environmental monitoring, machine-learning forecasting, climate-health guidance, historical trend analysis, explainable AI and climate-aware UAE destination exploration.
+
+### 📊 Environmental Dashboard
+
+A central environmental intelligence dashboard presenting current air-quality and weather conditions alongside the next-day AI forecast.
+
+![ClimaCare UAE AI Dashboard](assets/screenshots/dashboard.png)
+
+### 🤖 AI Air Quality Forecast
+
+The forecasting interface compares current environmental conditions with the Random Forest model's next-day AQI prediction and communicates the expected direction of change.
+
+![ClimaCare UAE AI Forecast](assets/screenshots/forecast.png)
+
+### ❤️ Climate & Health Guidance
+
+Environmental readings are translated into clear climate-health awareness guidance, including current AQI conditions, exposure considerations and practical precautions.
+
+![ClimaCare UAE AI Health Guidance](assets/screenshots/health.png)
+
+### 📈 Environmental Trends
+
+Historical AQI and particulate-matter patterns are visualised to help users understand recent environmental changes and pollution behaviour.
+
+![ClimaCare UAE AI Trends](assets/screenshots/trends.png)
+
+### 🧠 Explainable AI Insights
+
+The AI Insights interface combines the current environmental state with the next-day prediction and contextual environmental signals to make the forecasting pipeline easier to interpret.
+
+![ClimaCare UAE AI Insights](assets/screenshots/insights.png)
+
+### 🗺️ AI Explore
+
+AI Explore combines UAE destination discovery, live environmental conditions, interactive mapping, environmental suitability recommendations and an AI-powered assistant.
+
+![ClimaCare UAE AI Explore](assets/screenshots/explore.png)
+
