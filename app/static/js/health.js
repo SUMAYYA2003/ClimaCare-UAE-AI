@@ -155,12 +155,32 @@ async function loadHealthData() {
         let sensitiveGuidance =
             "Sensitive individuals may wish to monitor how they feel and reduce prolonged exposure if discomfort occurs.";
 
-        let heatGuidance =
-            "Carry water and use shade when spending longer periods outdoors.";
+let heatGuidance =
+    "Stay hydrated and take sensible precautions during outdoor activities.";
 
-        let airGuidance =
-            "Air-quality conditions can generally be managed with normal awareness and sensible exposure choices.";
+let heatDetail =
+    "Carry water and take breaks when spending longer periods outdoors.";
 
+const currentHour = new Date().getHours();
+const isDaytime =
+    currentHour >= 6 && currentHour < 18;
+
+if (isDaytime) {
+    heatGuidance =
+        "Carry water and use shade when spending longer periods outdoors.";
+
+    heatDetail =
+        "Carry water, use shade where possible, and consider sunglasses or sun protection during longer daytime outdoor trips.";
+} else {
+    heatGuidance =
+        "Stay hydrated during longer evening or nighttime outdoor activities.";
+
+    heatDetail =
+        "Carry water and take suitable breaks during longer outdoor trips. Sun protection is generally unnecessary after sunset.";
+}
+
+let airGuidance =
+    "Air-quality conditions can generally be managed with normal awareness and sensible exposure choices.";
 
         /* =================================================
            AIR QUALITY / PARTICULATE EXPOSURE
@@ -202,20 +222,43 @@ async function loadHealthData() {
            HEAT
            ================================================= */
 
-        if (temperature >= 35) {
+  if (temperature >= 35) {
 
-            heatGuidance =
-                "Warm conditions are present. Carry water, use shade, sunglasses or sun protection, and take breaks during longer outdoor trips.";
+    if (isDaytime) {
 
-            riskMessage +=
-                " Higher temperatures also make hydration, shade and sun protection more important.";
+        heatGuidance =
+            "Warm conditions are present. Carry water, use shade and sun protection, and take breaks during longer daytime outdoor trips.";
 
-            healthFocusTitle =
-                "Prioritise hydration and heat protection.";
+        heatDetail =
+            "Stay hydrated, seek shade where possible, and consider sunglasses or sun protection during prolonged daytime exposure.";
 
-            healthFocusMessage =
-                "Warm conditions increase heat exposure. Carry water, seek shade and consider reducing prolonged activity during the hottest periods.";
-        }
+        riskMessage +=
+            " Higher temperatures also make hydration, shade and sun protection more important during daytime exposure.";
+
+        healthFocusTitle =
+            "Prioritise hydration and heat protection.";
+
+        healthFocusMessage =
+            "Warm conditions increase heat exposure. Carry water, seek shade and consider reducing prolonged activity during the hottest periods.";
+
+    } else {
+
+        heatGuidance =
+            "Warm conditions may continue into the evening. Stay hydrated and take breaks during longer outdoor activities.";
+
+        heatDetail =
+            "Carry water and allow time for rest during prolonged evening or nighttime outdoor activities.";
+
+        riskMessage +=
+            " Warm conditions may continue after sunset, so hydration and suitable rest remain important.";
+
+        healthFocusTitle =
+            "Stay hydrated during warm evening conditions.";
+
+        healthFocusMessage =
+            "Warm conditions may persist after sunset. Carry water and take breaks during prolonged outdoor activity.";
+    }
+}
 
 
         /* =================================================
@@ -313,28 +356,33 @@ async function loadHealthData() {
 
 
         /* =================================================
-           GUIDANCE
-           ================================================= */
+   GUIDANCE
+   ================================================= */
 
-        setHealthText(
-            "health-general-guidance",
-            generalGuidance
-        );
+setHealthText(
+    "health-general-guidance",
+    generalGuidance
+);
 
-        setHealthText(
-            "health-sensitive-guidance",
-            sensitiveGuidance
-        );
+setHealthText(
+    "health-sensitive-guidance",
+    sensitiveGuidance
+);
 
-        setHealthText(
-            "health-heat-guidance",
-            heatGuidance
-        );
+setHealthText(
+    "health-heat-guidance",
+    heatGuidance
+);
 
-        setHealthText(
-            "health-air-guidance",
-            airGuidance
-        );
+setHealthText(
+    "health-heat-detail",
+    heatDetail
+);
+
+setHealthText(
+    "health-air-guidance",
+    airGuidance
+);
 
 
         /* =================================================
