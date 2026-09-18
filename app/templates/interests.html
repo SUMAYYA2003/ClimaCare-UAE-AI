@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Personalize ClimaCare
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=8"
+    >
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f4f8f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .interest-card {
+            width: min(760px, 100%);
+            background: white;
+            padding: 42px;
+            border-radius: 26px;
+            box-shadow:
+                0 20px 60px rgba(18, 73, 49, 0.1);
+        }
+
+        .brand {
+            color: #157347;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+            color: #17382b;
+        }
+
+        .subtitle {
+            color: #718078;
+            margin-bottom: 30px;
+        }
+
+        .interest-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .interest-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .interest-option span {
+            display: block;
+            border: 2px solid #e1ebe5;
+            border-radius: 16px;
+            padding: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+            color: #344a40;
+        }
+
+        .interest-option input:checked + span {
+            border-color: #188653;
+            background: #edf8f1;
+            color: #12683f;
+        }
+
+        .continue-button {
+            width: 100%;
+            margin-top: 28px;
+            border: 0;
+            border-radius: 14px;
+            padding: 16px;
+            background: #157347;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .error {
+            background: #fff0f0;
+            color: #a22b2b;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .interest-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interest-card {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="interest-card">
+
+        <div class="brand">
+            ClimaCare UAE AI
+        </div>
+
+        <h1>
+            What are you interested in,
+            {{ user_name }}?
+        </h1>
+
+        <p class="subtitle">
+            Choose the topics you would like
+            ClimaCare to consider when personalizing
+            your experience.
+        </p>
+
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form
+            method="post"
+            action="/interests"
+        >
+
+            <div class="interest-grid">
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="air_quality"
+                    >
+                    <span>Air Quality</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="health"
+                    >
+                    <span>Health &amp; Wellbeing</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="outdoor"
+                    >
+                    <span>Outdoor Activities</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="beaches"
+                    >
+                    <span>Beaches</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="desert"
+                    >
+                    <span>Desert &amp; Adventure</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="family"
+                    >
+                    <span>Family Activities</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="shopping"
+                    >
+                    <span>Shopping &amp; Indoor Places</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="culture"
+                    >
+                    <span>UAE Culture &amp; Heritage</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="environmental_trends"
+                    >
+                    <span>Environmental Trends</span>
+                </label>
+
+                <label class="interest-option">
+                    <input
+                        type="checkbox"
+                        name="interests"
+                        value="sustainability"
+                    >
+                    <span>Sustainability</span>
+                </label>
+
+            </div>
+
+            <button
+                class="continue-button"
+                type="submit"
+            >
+                Save Interests &amp; Continue
+            </button>
+
+        </form>
+
+    </main>
+
+</body>
+</html>

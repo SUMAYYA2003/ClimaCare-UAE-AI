@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Verify Email | ClimaCare UAE AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=8"
+    >
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef8f2,
+                    #ffffff
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .verification-card {
+            width: min(440px, calc(100% - 40px));
+            background: white;
+            border-radius: 24px;
+            padding: 42px;
+            box-shadow:
+                0 20px 60px rgba(18, 73, 49, 0.12);
+            text-align: center;
+        }
+
+        .verification-brand {
+            color: #147447;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 28px;
+        }
+
+        .verification-card h1 {
+            margin: 0 0 12px;
+            color: #16392b;
+            font-size: 30px;
+        }
+
+        .verification-description {
+            color: #66766f;
+            line-height: 1.6;
+        }
+
+        .verification-email {
+            color: #176b45;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .otp-input {
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 25px;
+            padding: 18px;
+            border: 2px solid #dce9e1;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 10px;
+            outline: none;
+        }
+
+        .otp-input:focus {
+            border-color: #168552;
+        }
+
+        .verify-button,
+        .resend-button {
+            width: 100%;
+            border: 0;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .verify-button {
+            margin-top: 18px;
+            padding: 16px;
+            background: #157347;
+            color: white;
+            font-size: 16px;
+        }
+
+        .resend-button {
+            margin-top: 12px;
+            padding: 12px;
+            background: transparent;
+            color: #157347;
+        }
+
+        .verification-message {
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 10px;
+            background: #edf8f1;
+            color: #176b45;
+        }
+
+        .verification-error {
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 10px;
+            background: #fff0f0;
+            color: #a22b2b;
+        }
+
+        .expiry-note {
+            margin-top: 18px;
+            color: #89958f;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="verification-card">
+
+        <div class="verification-brand">
+            ClimaCare UAE AI
+        </div>
+
+        <h1>Verify your email</h1>
+
+        <p class="verification-description">
+            We sent a 6-digit verification code to
+        </p>
+
+        <div class="verification-email">
+            {{ email }}
+        </div>
+
+        {% if error %}
+        <div class="verification-error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if message %}
+        <div class="verification-message">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <form
+            method="post"
+            action="/verify-email"
+        >
+
+            <input
+                class="otp-input"
+                type="text"
+                name="otp"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                maxlength="6"
+                pattern="[0-9]{6}"
+                placeholder="000000"
+                required
+                autofocus
+            >
+
+            <button
+                class="verify-button"
+                type="submit"
+            >
+                Verify Email
+            </button>
+
+        </form>
+
+        <form
+            method="post"
+            action="/resend-otp"
+        >
+            <button
+                class="resend-button"
+                type="submit"
+            >
+                Didn't receive it? Resend code
+            </button>
+        </form>
+
+        <div class="expiry-note">
+            Verification codes expire after
+            10 minutes.
+        </div>
+
+    </main>
+
+</body>
+</html>
