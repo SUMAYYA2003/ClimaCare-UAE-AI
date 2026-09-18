@@ -155,20 +155,33 @@ Climate-Health Intelligence Platform
 
     context = ssl.create_default_context()
 
-    with smtplib.SMTP_SSL(
-        "smtp.gmail.com",
-        465,
-        context=context,
-        timeout=20
-    ) as smtp:
+    try:
+        with smtplib.SMTP_SSL(
+            "smtp.gmail.com",
+            465,
+            context=context,
+            timeout=20
+        ) as smtp:
 
-        smtp.login(
-            EMAIL_ADDRESS,
-            EMAIL_APP_PASSWORD
+            smtp.login(
+                EMAIL_ADDRESS,
+                EMAIL_APP_PASSWORD
+            )
+
+            smtp.send_message(
+                message
+            )
+
+        print(
+            f"CLIMACARE EMAIL: verification email sent to {recipient_email}",
+            flush=True
         )
 
-        smtp.send_message(
-            message
-        )
+        return True
 
-    return True
+    except Exception as exc:
+        print(
+            f"CLIMACARE EMAIL ERROR: {type(exc).__name__}: {exc}",
+            flush=True
+        )
+        raise
