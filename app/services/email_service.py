@@ -1,20 +1,14 @@
 import os
-import smtplib
-import ssl
 
-from email.message import EmailMessage
+import resend
 from dotenv import load_dotenv
 
 
 load_dotenv()
 
 
-EMAIL_ADDRESS = os.getenv(
-    "CLIMACARE_EMAIL_ADDRESS"
-)
-
-EMAIL_APP_PASSWORD = os.getenv(
-    "CLIMACARE_EMAIL_APP_PASSWORD"
+RESEND_API_KEY = os.getenv(
+    "RESEND_API_KEY"
 )
 
 
@@ -24,33 +18,22 @@ def send_verification_email(
     otp: str
 ):
     """
-    Send the ClimaCare email-verification OTP.
+    Send the ClimaCare email-verification OTP
+    using the Resend HTTPS API.
     """
 
-    if not EMAIL_ADDRESS:
+    if not RESEND_API_KEY:
         raise RuntimeError(
-            "CLIMACARE_EMAIL_ADDRESS is missing."
+            "RESEND_API_KEY is missing."
         )
 
-    if not EMAIL_APP_PASSWORD:
-        raise RuntimeError(
-            "CLIMACARE_EMAIL_APP_PASSWORD is missing."
-        )
+    resend.api_key = RESEND_API_KEY
 
-    message = EmailMessage()
-
-    message["Subject"] = (
+    subject = (
         "Verify your ClimaCare UAE AI account"
     )
 
-    message["From"] = (
-        f"ClimaCare UAE AI <{EMAIL_ADDRESS}>"
-    )
-
-    message["To"] = recipient_email
-
-    message.set_content(
-        f"""
+    text_content = f"""
 Hello {recipient_name},
 
 Welcome to ClimaCare UAE AI.
@@ -66,8 +49,7 @@ you can ignore this email.
 
 ClimaCare UAE AI
 Climate-Health Intelligence Platform
-        """.strip()
-    )
+    """.strip()
 
     html_content = f"""
     <!DOCTYPE html>
@@ -148,32 +130,25 @@ Climate-Health Intelligence Platform
     </html>
     """
 
-    message.add_alternative(
-        html_content,
-        subtype="html"
-    )
-
-    context = ssl.create_default_context()
-
     try:
-        with smtplib.SMTP_SSL(
-            "smtp.gmail.com",
-            465,
-            context=context,
-            timeout=20
-        ) as smtp:
-
-            smtp.login(
-                EMAIL_ADDRESS,
-                EMAIL_APP_PASSWORD
-            )
-
-            smtp.send_message(
-                message
-            )
+        response = resend.Emails.send(
+            {
+                "from": (
+                    "ClimaCare UAE AI "
+                    "<onboarding@resend.dev>"
+                ),
+                "to": [
+                    recipient_email
+                ],
+                "subject": subject,
+                "html": html_content,
+                "text": text_content,
+            }
+        )
 
         print(
-            f"CLIMACARE EMAIL: verification email sent to {recipient_email}",
+            "CLIMACARE EMAIL: "
+            f"verification email sent to {recipient_email}",
             flush=True
         )
 
@@ -181,7 +156,8 @@ Climate-Health Intelligence Platform
 
     except Exception as exc:
         print(
-            f"CLIMACARE EMAIL ERROR: {type(exc).__name__}: {exc}",
+            "CLIMACARE EMAIL ERROR: "
+            f"{type(exc).__name__}: {exc}",
             flush=True
         )
         raise
