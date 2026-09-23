@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Welcome | ClimaCare UAE AI
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    rgba(10, 47, 37, 0.10),
+                    rgba(10, 47, 37, 0.18)
+                ),
+                url("/static/images/login-greenery.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px 20px;
+
+            color: #14392d;
+        }
+
+
+        /* =============================================
+           PAGE
+        ============================================= */
+
+        .welcome-page {
+            width: 100%;
+            max-width: 920px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            text-align: center;
+        }
+
+
+        /* =============================================
+           BRAND
+        ============================================= */
+
+        .brand-mark {
+            width: 74px;
+            height: 74px;
+
+            margin-bottom: 14px;
+
+            border-radius:
+                28px 28px 34px 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #31a95c,
+                    #087f68
+                );
+
+            color: white;
+
+            font-size: 32px;
+            font-weight: 800;
+
+            box-shadow:
+                0 14px 35px
+                rgba(14, 98, 67, 0.25);
+        }
+
+
+        .brand-title {
+            margin: 0;
+
+            color: #0b4e4c;
+
+            font-size: clamp(
+                36px,
+                5vw,
+                62px
+            );
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+        }
+
+
+        .brand-title span {
+            color: #16864f;
+        }
+
+
+        .brand-subtitle {
+            margin:
+                10px 0 30px;
+
+            color: #355e59;
+
+            font-size: 17px;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        /* =============================================
+           WELCOME CARD
+        ============================================= */
+
+        .welcome-card {
+            width: min(
+                570px,
+                100%
+            );
+
+            padding:
+                34px 38px 30px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.65);
+
+            border-radius: 26px;
+
+            background:
+                rgba(255, 255, 255, 0.91);
+
+            backdrop-filter:
+                blur(14px);
+
+            -webkit-backdrop-filter:
+                blur(14px);
+
+            box-shadow:
+                0 24px 70px
+                rgba(24, 64, 47, 0.20);
+        }
+
+
+        .welcome-card h2 {
+            margin:
+                0 0 8px;
+
+            color: #123f3c;
+
+            font-size: 31px;
+        }
+
+
+        .welcome-card p {
+            margin:
+                0 0 24px;
+
+            color: #647872;
+
+            font-size: 17px;
+        }
+
+
+        /* =============================================
+           NAME INPUT
+        ============================================= */
+
+        .name-input {
+            width: 100%;
+
+            padding:
+                17px 19px;
+
+            border:
+                2px solid
+                #dce8e2;
+
+            border-radius: 15px;
+
+            background:
+                rgba(255, 255, 255, 0.95);
+
+            color: #183e33;
+
+            font-size: 17px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s,
+                box-shadow 0.2s;
+        }
+
+
+        .name-input:focus {
+            border-color: #188653;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(24, 134, 83, 0.10);
+        }
+
+
+        .name-input::placeholder {
+            color: #9baaa4;
+        }
+
+
+        /* =============================================
+           CONTINUE BUTTON
+        ============================================= */
+
+        .continue-button {
+            width: 100%;
+
+            margin-top: 16px;
+
+            padding: 17px;
+
+            border: 0;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2fa65a,
+                    #087e68
+                );
+
+            color: white;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(14, 126, 92, 0.20);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+
+        .continue-button:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(14, 126, 92, 0.27);
+        }
+
+
+        /* =============================================
+           PRIVACY MESSAGE
+        ============================================= */
+
+        .privacy-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 19px;
+
+            color: #71847d;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        .privacy-leaf {
+            color: #299a55;
+
+            font-size: 18px;
+        }
+
+
+        /* =============================================
+           POSITIVE QUOTE
+        ============================================= */
+
+        .welcome-quote {
+            max-width: 700px;
+
+            margin:
+                34px auto 0;
+
+            padding:
+                17px 24px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255, 255, 255, 0.72);
+
+            color: #12604f;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: clamp(
+                18px,
+                2.2vw,
+                23px
+            );
+
+            font-style: italic;
+
+            line-height: 1.55;
+
+            box-shadow:
+                0 10px 30px
+                rgba(31, 72, 55, 0.08);
+        }
+
+
+        /* =============================================
+           SMALL SCREENS
+        ============================================= */
+
+        @media (
+            max-width: 600px
+        ) {
+
+            body {
+                padding:
+                    28px 16px;
+            }
+
+            .brand-mark {
+                width: 62px;
+                height: 62px;
+
+                font-size: 27px;
+            }
+
+            .brand-title {
+                letter-spacing: -1px;
+            }
+
+            .brand-subtitle {
+                font-size: 14px;
+
+                margin-bottom: 23px;
+            }
+
+            .welcome-card {
+                padding:
+                    28px 20px 24px;
+            }
+
+            .welcome-card h2 {
+                font-size: 27px;
+            }
+
+            .welcome-quote {
+                margin-top: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="welcome-page">
+
+
+        <!-- =========================================
+             CLIMACARE BRAND
+        ========================================== -->
+
+        <div class="brand-mark">
+             🌿
+        </div>
+
+
+        <h1 class="brand-title">
+            ClimaCare <span>UAE AI</span>
+        </h1>
+
+
+        <p class="brand-subtitle">
+            Climate-Health Intelligence for a Healthier UAE
+        </p>
+
+
+        <!-- =========================================
+             GUEST WELCOME
+        ========================================== -->
+
+        <section class="welcome-card">
+
+            <h2>
+                Welcome to ClimaCare!
+            </h2>
+
+            <p>
+                What should we call you?
+            </p>
+
+
+            <form
+                method="post"
+                action="/guest"
+            >
+
+                <input
+                    class="name-input"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    maxlength="60"
+                    autocomplete="name"
+                    required
+                    autofocus
+                >
+
+
+                <button
+                    class="continue-button"
+                    type="submit"
+                >
+                    Continue to ClimaCare →
+                </button>
+
+            </form>
+
+
+            <div class="privacy-note">
+
+                <span class="privacy-leaf">
+                    ❧
+                </span>
+
+                <span>
+                    No account required.
+                    Your name is used only to
+                    personalize your current experience.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             POSITIVE MESSAGE
+        ========================================== -->
+
+        <div class="welcome-quote">
+
+            “Whatever today has been,
+            tomorrow is another chance to feel better,
+            breathe easier, and begin again.”
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>
