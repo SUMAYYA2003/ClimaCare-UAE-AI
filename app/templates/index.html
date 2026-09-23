@@ -167,50 +167,56 @@
     </div>
 
 
-    <!-- Logged-in user -->
-    <div class="user-account">
+<!-- Current ClimaCare visitor -->
+<div class="user-account">
 
-        <div class="user-avatar">
-            {{ user_name[0] | upper if user_name else "U" }}
-        </div>
+    <div class="user-avatar">
+        {{ user_name[0] | upper if user_name else "U" }}
+    </div>
 
-        <div class="user-details">
+    <div class="user-details">
 
-            <strong>
-                {{ user_name or "User" }}
-            </strong>
+        <strong>
+            {{ user_name or "Guest" }}
+        </strong>
 
-            <small>
-                {{ user_email or "" }}
-            </small>
-
-        </div>
-
-
-{% if user_role == "admin" %}
-
-<a
-    href="/admin"
-    class="admin-link"
-    title="Open Admin Dashboard"
->
-    Admin
-</a>
-
-{% endif %}
-
-        <a
-            href="/logout"
-            class="logout-link"
-            title="Sign out"
-        >
-            Logout
-        </a>
+        {% if user_role == "guest" %}
+        <small>
+            Guest
+        </small>
+        {% else %}
+        <small>
+            {{ user_email or "" }}
+        </small>
+        {% endif %}
 
     </div>
 
-</div>
+    {% if user_role == "admin" %}
 
+    <a
+        href="/admin"
+        class="admin-link"
+        title="Open Admin Dashboard"
+    >
+        Admin
+    </a>
+
+    {% endif %}
+
+    {% if user_role != "guest" %}
+
+    <a
+        href="/logout"
+        class="logout-link"
+        title="Sign out"
+    >
+        Logout
+    </a>
+
+    {% endif %}
+
+</div>
             </header>
 
 

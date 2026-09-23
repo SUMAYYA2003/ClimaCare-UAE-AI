@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentEnvironment = null;
     let currentForecast = null;
     let selectedDestination = null;
-    let selectedRating = 0;
+  
 
 
     /* DESTINATION DATA */
@@ -20,14 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     {
-        name: "Burj Khalifa",
-        emirate: "Dubai",
-        emirateKey: "dubai",
-        category: "landmark",
-        symbol: "◈",
-        mapsQuery: "Burj Khalifa Dubai",
-        officialUrl: "https://www.burjkhalifa.ae/"
-    },
+    name: "Burj Khalifa",
+    emirate: "Dubai",
+    emirateKey: "dubai",
+    category: "landmark",
+    symbol: "◈",
+    mapsQuery: "Burj Khalifa Dubai",
+    officialUrl: "https://www.burjkhalifa.ae/",
+    lat: 25.1972,
+    lng: 55.2744
+},
 
     {
         name: "Museum of the Future",
@@ -2233,7 +2235,7 @@ if (!destination) {
         "map-location-label",
         `${destination.name}, ${destination.emirate}`
     );
-
+focusDestinationOnLeafletMap(destination);
 
     applyDestinationFilters();
 
@@ -2309,94 +2311,9 @@ if (!destination) {
         );
 
 
-    /* =====================================================
-       FEEDBACK STARS
-    ===================================================== */
+    
 
-    document
-        .querySelectorAll(
-            ".feedback-rating-buttons button"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    selectedRating =
-                        Number(
-                            button.dataset.rating
-                        );
-
-
-                    document
-                        .querySelectorAll(
-                            ".feedback-rating-buttons button"
-                        )
-                        .forEach(
-                            (star, index) => {
-
-                                star.textContent =
-                                    index < selectedRating
-                                        ? "★"
-                                        : "☆";
-                            }
-                        );
-
-
-                    setText(
-                        "feedback-status",
-                        `Rating selected: ${selectedRating}/5`
-                    );
-
-                }
-            );
-
-        });
-
-
-    /* =====================================================
-       FEEDBACK SUBMIT
-    ===================================================== */
-
-    document
-        .getElementById(
-            "submit-explore-feedback"
-        )
-        ?.addEventListener(
-            "click",
-            () => {
-
-                const feedback =
-                    document
-                        .getElementById(
-                            "explore-feedback-text"
-                        )
-                        ?.value
-                        .trim();
-
-
-                if (
-                    selectedRating === 0 &&
-                    !feedback
-                ) {
-
-                    setText(
-                        "feedback-status",
-                        "Please select a rating or write a short comment."
-                    );
-
-                    return;
-                }
-
-
-                setText(
-                    "feedback-status",
-                    "Thank you. Your feedback has been recorded for this session."
-                );
-
-            }
-        );
+    
 
 
     /* =====================================================

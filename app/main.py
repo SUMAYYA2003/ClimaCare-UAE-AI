@@ -840,7 +840,6 @@ def login_user(
         status_code=303,
     )
 
-
 # =========================================================
 # USER LOGOUT
 # =========================================================
@@ -851,10 +850,9 @@ async def logout(request: Request):
     request.session.clear()
 
     return RedirectResponse(
-        url="/login",
+        url="/welcome",
         status_code=303,
     )
-
 
 # =========================================================
 # ADMIN DASHBOARD
@@ -911,7 +909,6 @@ def health_check():
 # =========================================================
 # USER FEEDBACK API
 # =========================================================
-
 @app.post("/api/feedback")
 def submit_feedback(
     request: Request,
@@ -919,23 +916,71 @@ def submit_feedback(
     comment: str = Form(""),
 ):
 
-    user_id = request.session.get(
-        "user_id"
+    # -----------------------------------------------------
+    # Identify the current ClimaCare session
+    # -----------------------------------------------------
+
+    user_id = request.session.get("user_id")
+    access_mode = request.session.get("access_mode")
+    guest_name = request.session.get("guest_name")
+
+    is_registered_user = bool(user_id)
+
+    is_guest = (
+        access_mode == "guest"
+        and bool(guest_name)
     )
 
-    if not user_id:
+    # -----------------------------------------------------
+    # Require either a registered user or valid guest
+    # -----------------------------------------------------
+
+    if not is_registered_user and not is_guest:
         raise HTTPException(
             status_code=401,
-            detail=(
-                "Please sign in to submit feedback."
-            ),
+            detail="Please enter ClimaCare through the welcome page.",
         )
+
+    # -----------------------------------------------------
+    # Validate feedback rating for both access modes
+    # -----------------------------------------------------
 
     if rating < 1 or rating > 5:
         raise HTTPException(
             status_code=400,
+            detail="Rating must be between 1 and 5.",
+        )
+
+    # -----------------------------------------------------
+    # Guest feedback
+    #
+    # Guests do not have a users.id database record.
+    # Therefore we must not insert their feedback into the
+    # existing feedback table, whose user_id is a required
+    # foreign key to users.id.
+    # -----------------------------------------------------
+
+    if is_guest:
+        return {
+            "success": True,
+            "message": "Thank you for your feedback.",
+        }
+
+    # -----------------------------------------------------
+    # Registered-user feedback
+    # Preserve the existing database-backed behaviour.
+    # -----------------------------------------------------
+
+    user = get_user_by_id(user_id)
+
+    if not user:
+        request.session.clear()
+
+        raise HTTPException(
+            status_code=401,
             detail=(
-                "Rating must be between 1 and 5."
+                "Your session has expired. "
+                "Please sign in again."
             ),
         )
 
@@ -950,6 +995,76 @@ def submit_feedback(
         "message": "Thank you for your feedback.",
     }
 
+# =========================================================
+# WELCOME PAGE
+# =========================================================
+
+@app.get(
+    "/welcome",
+    response_class=HTMLResponse,
+)
+def welcome_page(request: Request):
+
+    # Already inside ClimaCare as a guest or registered user.
+    if (
+        request.session.get("user_id")
+        or (
+            request.session.get("access_mode") == "guest"
+            and request.session.get("guest_name")
+        )
+    ):
+        return RedirectResponse(
+            url="/",
+            status_code=303,
+        )
+
+    return templates.TemplateResponse(
+        request=request,
+        name="welcome.html",
+        context={},
+    )
+
+# =========================================================
+# GUEST ACCESS
+# =========================================================
+
+@app.post("/guest")
+def continue_as_guest(
+    request: Request,
+    name: str = Form(...),
+):
+    # -----------------------------------------------------
+    # Validate the guest name
+    # -----------------------------------------------------
+
+    guest_name = name.strip()
+
+    if not guest_name:
+        return RedirectResponse(
+            url="/login?guest_error=1",
+            status_code=303,
+        )
+
+    # Keep the guest name reasonably small.
+    guest_name = guest_name[:60]
+
+    # -----------------------------------------------------
+    # Start a clean temporary guest session
+    # -----------------------------------------------------
+
+    request.session.clear()
+
+    request.session["access_mode"] = "guest"
+    request.session["guest_name"] = guest_name
+
+    # -----------------------------------------------------
+    # Continue to the ClimaCare dashboard
+    # -----------------------------------------------------
+
+    return RedirectResponse(
+        url="/",
+        status_code=303,
+    )
 
 # =========================================================
 # MAIN APPLICATION DASHBOARD
@@ -961,11 +1076,42 @@ def submit_feedback(
 )
 def home(request: Request):
 
-    if not request.session.get("user_id"):
+    # -----------------------------------------------------
+    # Allow either:
+    # 1. A registered/authenticated user
+    # 2. A temporary ClimaCare guest session
+    # -----------------------------------------------------
+
+    user_id = request.session.get("user_id")
+    access_mode = request.session.get("access_mode")
+    guest_name = request.session.get("guest_name")
+
+    is_registered_user = bool(user_id)
+    is_guest = (
+        access_mode == "guest"
+        and bool(guest_name)
+    )
+
+    # No valid ClimaCare session.
+    if not is_registered_user and not is_guest:
         return RedirectResponse(
-            url="/login",
+            url="/welcome",
             status_code=303,
         )
+
+    # -----------------------------------------------------
+    # Registered users keep their existing information.
+    # Guests use only their temporary session name.
+    # -----------------------------------------------------
+
+    if is_guest:
+        display_name = guest_name
+        display_email = ""
+        display_role = "guest"
+    else:
+        display_name = request.session.get("user_name")
+        display_email = request.session.get("user_email")
+        display_role = request.session.get("user_role")
 
     return templates.TemplateResponse(
         request=request,
@@ -973,18 +1119,11 @@ def home(request: Request):
         context={
             "project_name": "ClimaCare UAE AI",
             "location": "Dubai, UAE",
-            "user_name": request.session.get(
-                "user_name"
-            ),
-            "user_email": request.session.get(
-                "user_email"
-            ),
-            "user_role": request.session.get(
-                "user_role"
-            ),
+            "user_name": display_name,
+            "user_email": display_email,
+            "user_role": display_role,
         },
     )
-
 
 # =========================================================
 # HEALTH GUIDANCE PAGE
@@ -1126,14 +1265,25 @@ def explore_ai_assistant(
     request: Request,
 ):
 
-    # -----------------------------------------------------
-    # Require authentication
-    # -----------------------------------------------------
+        # -------------------------------------------------
+    # Allow registered users and ClimaCare guests
+    # -------------------------------------------------
 
-    if not request.session.get("user_id"):
+    user_id = request.session.get("user_id")
+    access_mode = request.session.get("access_mode")
+    guest_name = request.session.get("guest_name")
+
+    is_registered_user = bool(user_id)
+
+    is_guest = (
+        access_mode == "guest"
+        and bool(guest_name)
+    )
+
+    if not is_registered_user and not is_guest:
         raise HTTPException(
             status_code=401,
-            detail="Please sign in to use the AI assistant.",
+            detail="Please enter ClimaCare through the welcome page.",
         )
 
     message = payload.message.strip()
